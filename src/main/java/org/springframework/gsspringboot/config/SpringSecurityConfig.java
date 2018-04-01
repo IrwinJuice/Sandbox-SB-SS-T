@@ -25,6 +25,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/", "/home", "/about").permitAll()
                     //.antMatchers - Позволяет настроить HttpSecurity, для вызова при совпадении паттернов
                     //.permitAll() - доступно всем пользователям
-
+                    .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                    //.hasAnyRole - доступно только пользователям с указаной ролью
+                    .antMatchers("/user/**").hasAnyRole("USER")
+                    .anyRequest().authenticated() //Любые други запросы требуют аутентификации
+                .and()
+                .formLogin() //определяет локацию страницы логина
+                    .loginPage("/login") // у Spring Security есть собственная страница по умолчанию
+                    .permitAll() //гарантия того что все пользователи имеют доступ к этой странице
+                .and()
+                .logout() //обеспечивает выход из системы (есть расширяющие свойства
+                    .permitAll()
+                .and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
+
 }
