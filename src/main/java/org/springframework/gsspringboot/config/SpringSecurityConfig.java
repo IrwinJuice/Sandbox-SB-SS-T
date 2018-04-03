@@ -2,6 +2,7 @@ package org.springframework.gsspringboot.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -38,6 +39,18 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+                //.exceptionHandling - позволяет настраивать обработку исключений
+                //.accessDeniedHandler - кастомная страница ошибки доступа
+    }
+    //Создание дефолтных профилей
+    @Autowired
+    public void conigureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        //AuthenticationManagerBuilder - позволяет легко создать аутентификацию, в пямяти, в JDBC, LDAP
+        auth.inMemoryAuthentication()
+                //inMemoryAuthentication - создает аутентификацию в памяти
+                .withUser("user").password("password").roles("USER")
+                .and()
+                .withUser("admin").password("password").roles("ADMIN");
     }
 
 }
