@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="common_head(title,links)">
+    <!--параметризированый фрагмент-->
+    <title th:replace="${title}">The awesome application</title>
+        <!-- Common styles and scripts -->
+    <link rel="stylesheet" th:href="@{../../static/css/bootstrap.css}">
+    <link rel="shortcut icon" th:href="@{../../static/images/Approval.png}">
+    <script type="text/javascript" th:src="@{../../static/js/bootstrap.js}"></script>
+    <!--/* Per-page placeholder for additional links */-->
+    <th:block th:replace="${links}" />
+    <!--th:block -  единственный элементный процессор (а не атрибут), включенный в стандартные диалекты-->
+    <!--th: block - это простой контейнер атрибутов, который позволяет разработчикам
+     шаблонов указывать какие атрибуты они хотят.
+      Thymeleaf выполнит эти атрибуты, а затем просто сделает блок незаметным.-->
+</head>
+
+</html>
