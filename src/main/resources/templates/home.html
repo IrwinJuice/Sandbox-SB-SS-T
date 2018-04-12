@@ -2,17 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Bear House</title>
-
-    <link th:href="@{/css/main.css}" rel="stylesheet" />
-    <!--<script th:src="@{/jquery-3.3.1.min.js}"></script>
-    <script th:src="@{/bootstrap.min.js}"></script>-->
-  <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>-->
+<head th:replace="fragments/base :: common_head(~{::title})">
+    <title>Complete</title>
+   <!-- <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">-->
 </head>
 
 <body>
-<!--<div th:replace="fragments/base :: header"></div>-->
+<div th:replace="fragments/base :: header"></div>
 
 <div class="container">
 
@@ -24,7 +20,8 @@
     </div>
 
 </div>
-<!-- /.container -->
-<!--<div th:replace="fragments/base :: footer"></div>-->
+
+<div th:replace="fragments/base :: footer"></div>
+<div th:replace="fragments/base :: scripts"></div>
 </body>
 </html>

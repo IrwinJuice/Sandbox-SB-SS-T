@@ -1,22 +1,17 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<head th:fragment="common_head(title,links)">
+<head th:fragment="common_head(title)">
     <!--параметризированый фрагмент-->
     <title th:replace="${title}">The awesome application</title>
     <!-- Common styles and scripts -->
-    <!--<link rel="stylesheet" type="text/css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}">-->
-    <!--<link rel="stylesheet" type="text/css" th:href="@{../../static/css/bootstrap.css}">-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+                                        th:href="@{/css/bootstrap.min.css}">
 
-    <!-- <link rel="shortcut icon" th:href="@{images/Approval.png}">-->
-  <!--  <link rel="stylesheet" href="css/main.css"/> -->
-   <!-- <link rel="stylesheet" type="text/css" th:href="@{../static/css/main.css}"
-          href="../../static/css/main.css"/>-->
-    <script type="text/javascript" th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"></script>
-    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
+    <link rel="shortcut icon" th:href="@{/images/icon.png}">
 
     <!--/* Per-page placeholder for additional links */-->
-    <th:block th:replace="${links}"/>
+   <!-- <th:block th:replace="${links}"/>-->
     <!--th:block -  единственный элементный процессор (а не атрибут), включенный в стандартные диалекты-->
     <!--th: block - это простой контейнер атрибутов, который позволяет разработчикам
      шаблонов указывать какие атрибуты они хотят.
@@ -27,7 +22,7 @@
     <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" th:href="@{/}">Beer House</a>
+                <a class="navbar-brand" th:href="@{/}">Complete</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -53,10 +48,16 @@
                     Roles: <span sec:authentication="principal.authorities"></span>
                     <a th:href="@{/logout}">Sing Out</a>
                 </span>
-            <script type="text/javascript"
-                    src="../../static/js/bootstrap.js"></script>
         </footer>
     </div>
+</div>
+
+<div th:fragment="scripts">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            th:src="@{/js/jquery-3.3.1.min.js}"></script>
 </div>
 </body>
 </html>
