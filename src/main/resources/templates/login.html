@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/base :: common_head(~{::title},~{::link})">
-    <title>Spring Security Example </title>
-    <link rel="stylesheet" th:href="@{../static/css/main.css}">
+    <title>Bear House</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 
 <body>
-<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/base :: header"></div>
 
 <div class="container">
 
@@ -17,7 +17,7 @@
                 <fieldset>
                     <h1>Please Sign In</h1>
 
-                    <div th:if="${param.error}">
+                    <div th:if="${param.error}"> <!-- вернет параметр запроса с именем x (который может быть многозначным)-->
                         <div class="alert alert-danger">
                             Invalid username and password.
                         </div>
@@ -51,7 +51,7 @@
 
 </div>
 
-<!--<div th:replace="footer :: footer"/>-->
+<div th:replace="fragments/base :: footer"></div>
 
 </body>
 </html>

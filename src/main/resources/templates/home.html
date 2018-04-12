@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Spring Boot Thymeleaf + Spring Security</title>
+    <title>Bear House</title>
 
- <!--   <div th:replace="fragments/header :: header-css"/>-->
-
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <!--<script th:src="@{/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/bootstrap.min.js}"></script>-->
+  <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>-->
 </head>
-<body>
 
-<div th:replace="fragments/header :: header"/>
+<body>
+<!--<div th:replace="fragments/base :: header"></div>-->
 
 <div class="container">
 
@@ -22,8 +25,6 @@
 
 </div>
 <!-- /.container -->
-
-<div th:replace="fragments/footer :: footer"/>
-
+<!--<div th:replace="fragments/base :: footer"></div>-->
 </body>
 </html>

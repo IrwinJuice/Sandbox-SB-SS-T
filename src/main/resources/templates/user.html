@@ -1,11 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <div th:replace="fragments/header :: header-css"/>
+
+<head th:replace="fragments/base :: common_head(~{::title},~{::link})">
+    <title>Beer House</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
+
 <body>
 
-<div th:replace="fragments/header :: header"/>
+<div th:replace="fragments/base :: header"></div>
 
 <div class="container">
 
@@ -21,7 +24,7 @@
 
 </div>
 <!-- /.container -->
-<div th:replace="fragments/footer :: footer"/>
+<div th:replace="fragments/base :: footer"></div>
 
 </body>
 </html>

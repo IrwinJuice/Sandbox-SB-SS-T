@@ -10,6 +10,7 @@ public class DefaultController {
     public String home(){
         return "/home";
     }
+
     @GetMapping("/admin")
     public String admin() {
         return "/admin";
