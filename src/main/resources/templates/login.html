@@ -2,56 +2,36 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/base :: common_head(~{::title},~{::link})">
-    <title>Bear House</title>
+    <title>Complete</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 
 <body>
-<div th:replace="fragments/base :: header"></div>
 
-<div class="container">
-
-    <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <form th:action="@{/login}" method="post">
-                <fieldset>
-                    <h1>Please Sign In</h1>
-
-                    <div th:if="${param.error}"> <!-- вернет параметр запроса с именем x (который может быть многозначным)-->
-                        <div class="alert alert-danger">
-                            Invalid username and password.
-                        </div>
-                    </div>
-                    <div th:if="${param.logout}">
-                        <div class="alert alert-info">
-                            You have been logged out.
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" name="username" id="username" class="form-control input-lg"
-                               placeholder="UserName" required="true" autofocus="true"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control input-lg"
-                               placeholder="Password" required="true"/>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"/>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-
-</div>
-
-<div th:replace="fragments/base :: footer"></div>
-
+<c:url value="/login" var="loginUrl"/>
+<form action="${loginUrl}" method="post">
+    <c:if test="${param.error != null}">
+        <p>
+            Invalid username and password.
+        </p>
+    </c:if>
+    <c:if test="${param.logout != null}">
+        <p>
+            You have been logged out.
+        </p>
+    </c:if>
+    <p>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username"/>
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password"/>
+    </p>
+    <input type="hidden"
+           name="${_csrf.parameterName}"
+           value="${_csrf.token}"/>
+    <button type="submit" class="btn">Log in</button>
+</form>
 </body>
 </html>
