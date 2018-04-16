@@ -25,7 +25,7 @@
       Thymeleaf выполнит эти атрибуты, а затем просто сделает блок незаметным.-->
 </head>
 <body>
-<div th:fragment="header">
+<div th:fragment="header_home">
     <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
         <a class="navbar-brand" th:href="@{/}">Complete</a>
 
@@ -39,19 +39,20 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        Help
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Support</a>
+                        <a class="dropdown-item" href="#">Community</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="#">Restore the password</a>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
                     <a id="btn-login" class="btn my-2 my-sm-0" th:href="@{/login}"><i class="fa fa-user"></i>LOGIN</a>
