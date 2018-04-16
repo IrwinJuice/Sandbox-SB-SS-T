@@ -1,24 +1,24 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<head th:fragment="common_head(title)">
+<head th:fragment="common_head(title, links)">
     <!--параметризированый фрагмент-->
     <title th:replace="${title}">The awesome application</title>
     <!-- Common styles and scripts -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            th:src="@{/js/bootstrap.min.js}"></script>
+    <script  th:src="@{/js/login.js}"></script>
+
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 
     <link rel="shortcut icon" th:href="@{/images/icon.png}">
-
-    <script async src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            th:src="@{/js/bootstrap.min.js}"></script>
-    <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-            th:src="@{/js/jquery-3.3.1.min.js}"></script>
-    <script async th:src="@{/js/login.js}"></script>
-
     <!--/* Per-page placeholder for additional links */-->
-    <!-- <th:block th:replace="${links}"/>-->
+     <th:block th:replace="${links}"/>
     <!--th:block -  единственный элементный процессор (а не атрибут), включенный в стандартные диалекты-->
     <!--th: block - это простой контейнер атрибутов, который позволяет разработчикам
      шаблонов указывать какие атрибуты они хотят.
@@ -26,110 +26,37 @@
 </head>
 <body>
 <div th:fragment="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a class="navbar-brand" th:href="@{/}">Complete</a>
-            </div>
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="menu-item active"><a th:href="@{#}">About </a></li>
-                    <ul class="nav navbar-nav">
-                        <li class="menu-item"><a th:href="@{#}">Contact </a></li>
-                        <ul class="nav navbar-nav">
-                            <li class="menu-item"><a th:href="@{#}">Support <i class="fa fa-support"></i></a></li>
-                            <ul class="nav navbar-nav">
-                                <li class="menu-item"><a th:href="@{#}">Blog <i class="fa fa-comments-o"></i></a></li>
-                                <li class="menu-item dropdown"><a th:href="@{#}" class="dropdown-toggle"
-                                                                  data-toggle="dropdown">Settings <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li class="menu-item dropdown"><a th:href="@{#}" class="dropdown-toggle"
-                                                                          data-toggle="dropdown">Notifications <i
-                                                class="fa fa-wrench"></i></a>
-                                        </li>
-                                        <li class="menu-item dropdown dropdown-submenu"><a th:href="@{#}"
-                                                                                           class="dropdown-toggle"
-                                                                                           data-toggle="dropdown">Edit
-                                            Account </a>
-                                            <ul class="dropdown-menu">
-                                                <li class="menu-item "><a th:href="@{#}">Page with comments</a></li>
-                                                <li class="menu-item "><a th:href="@{#}">Page with comments disabled</a>
-                                                </li>
-                                                <li class="menu-item dropdown dropdown-submenu"><a th:href="@{#}"
-                                                                                                   class="dropdown-toggle"
-                                                                                                   data-toggle="dropdown">More</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a th:href="@{#}">3rd level link more options</a></li>
-                                                        <li><a th:href="@{#}">3rd level link</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li class="menu-item dropdown"><i class="fa"></i><a href="#"
-                                                                                            class="dropdown-toggle"
-                                                                                            data-toggle="dropdown">Logout
-                                            <i class="fa fa-power-off padding-left-ten-px red-text"></i></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </ul>
-                    </ul>
-                    <!-- DROPDOWN LOGIN STARTS HERE  -->
-                    <ul id="signInDropdown" class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <button type="button" id="dropdownMenu1" data-toggle="dropdown"
-                                    class="btn btn-info navbar-btn dropdown-toggle">
-                                <i class="glyphicon glyphicon-user"></i>
-                                Login <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li style="width: 250px;">
-                                    <form class="navbar-form form" role="form">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i
-                                                        class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                                <!--EMAIL ADDRESS-->
-                                                <input id="emailInput" placeholder="email address" class="form-control"
-                                                       type="email"
-                                                       oninvalid="setCustomValidity('Please enter a valid email address!')"
-                                                       onchange="try{setCustomValidity('')}catch(e){}" required="">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i
-                                                        class="glyphicon glyphicon-lock color-blue"></i></span>
-                                                <!--PASSWORD-->
-                                                <input id="passwordInput" placeholder="password" class="form-control"
-                                                       type="password"
-                                                       oninvalid="setCustomValidity('Please enter a password!')"
-                                                       onchange="try{setCustomValidity('')}catch(e){}" required="">
-                                            </div>
-                                        </div>
-                                        <!--  BASIC ERROR MESSAGE
-                                        <div class="form-group">
-                                        <label class="error-message color-red">*Email &amp; password don't match!</label>
-                                        </div>
-                                        -->
-                                        <div class="form-group">
-                                            <!--BUTTON-->
-                                            <button type="submit" class="btn btn-primary form-control">Login</button>
-                                        </div>
-                                        <div class="form-group">
-                                            <!--RESET PASSWORD LINK-->
-                                            <span class="pull-right"><a href="#">Forgot Password?</a></span>
-                                        </div>
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </ul> <!-- DROPDOWN LOGIN ENDS HERE  -->
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
+        <a class="navbar-brand" th:href="@{/}">Complete</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a id="btn-login" class="btn my-2 my-sm-0" th:href="@{/login}"><i class="fa fa-user"></i>LOGIN</a>
+                </li>
+            </ul>
         </div>
     </nav>
 </div>

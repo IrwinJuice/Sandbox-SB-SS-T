@@ -2,25 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/base :: common_head(~{::title})">
+<head th:replace="fragments/base :: common_head(~{::title}, ~{::link})">
     <title>Complete</title>
-   <!-- <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
 </head>
 
 <body>
 <div th:replace="fragments/base :: header"></div>
 
-<div class="container">
-
+<!--<div class="container">
     <div class="starter-template">
         <h1>Spring Boot Web Thymeleaf + Spring Security</h1>
         <h2>1. Visit <a th:href="@{/admin}">Admin page (Spring Security protected, Need Admin Role)</a></h2>
         <h2>2. Visit <a th:href="@{/user}">User page (Spring Security protected, Need User Role)</a></h2>
         <h2>3. Visit <a th:href="@{/about}">Normal page</a></h2>
     </div>
-
-</div>
-
+</div>-->
+<figure>
+    <h1>COMPLETE</h1>
+    <img th:src="@{/images/313967_wookmark.gif}" alt="wookmark">
+</figure>
 <div th:replace="fragments/base :: footer"></div>
 </body>
 </html>
