@@ -1,8 +1,11 @@
 package org.springframework.gsspringboot.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.gsspringboot.service.UserDetailsServiceImpl;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
@@ -11,7 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -19,24 +22,27 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AccessDeniedHandler accessDeniedHandler;
 
-   /* @Autowired
-    BCryptPasswordEncoder cryptPasswordEncoder;
+    @Autowired
+    private BCryptPasswordEncoder cryptPasswordEncoder;
 
+    @Qualifier("userDetailsServiceImpl")
     @Autowired
     private UserDetailsService userDetailsService;
-*/
 
     @Autowired
 
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
-       /* auth
+        auth
                 .userDetailsService(userDetailsService)
-                .passwordEncoder(cryptPasswordEncoder);*/
+                .passwordEncoder(cryptPasswordEncoder);
         //AuthenticationManagerBuilder - позволяет легко создать аутентификацию, в пямяти, в JDBC, LDAP
-        auth.inMemoryAuthentication()
+
+        /*auth.inMemoryAuthentication()*/
                 //inMemoryAuthentication - создает аутентификацию в памяти
-                .withUser("user123").password("{noop}qwe").roles("USER")
+
+               /* .withUser("user123").password("{noop}qwe").roles("USER")*/
+
                 // Нам нужен префикс {noop} так как:
                 // В spring-security-core:5.0.0.RC1 по умолчанию
                 // PasswordEncoder построен как DelegatingPasswordEncoder.
@@ -45,8 +51,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 // а при введении пароля на сайте, он проходит шифрование через DelegatingPasswordEncoder
                 // при попытке сравнить два пароля вылетит ошибка
                 //https://spring.io/blog/2017/11/01/spring-security-5-0-0-rc1-released#password-encoding
+
+                /*************
                 .and()
-                .withUser("admin").password("{noop}password").roles("ADMIN");
+                .withUser("templates/admin").password("{noop}password").roles("ADMIN");*/
     }
 
     // roles admin allow to access /admin/**
@@ -58,7 +66,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()  /*csrf = Cross Site Request Forgery (Межсайтовая подделка запроса)
                                     .csrf().disable() - отключена*/
                 .authorizeRequests() //Позволяет ограничивать доступ на основе HttpServletRequest
-                    .antMatchers("/", "/home", "/about").permitAll()
+                    .antMatchers("/", "/vinylShop", "/completeMP", "/about").permitAll()
                     //.antMatchers - Позволяет настроить HttpSecurity, для вызова при совпадении паттернов
                     //.permitAll() - доступно всем пользователям
                         //   com/t?st.jsp - matches com/test.jsp but also com/tast.jsp or com/txst.jsp
@@ -69,14 +77,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         //  also org/springframework/testing/servlet/bla.jsp and org/servlet/bla.jsp
                         //   com/{filename:\\w+}.jsp will match com/test.jsp and assign the value test to the filename variable
 
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/completeAP").hasAnyRole("ROLE_ADMIN")
                     //.hasAnyRole - доступно только пользователям с указаной ролью
-                    .antMatchers("/user/**").hasAnyRole("USER")
+
+                   /* .antMatchers("/user/**").hasAnyRole("ROLE_USER")*/
+
                     .anyRequest().authenticated() //Любые други запросы требуют аутентификации
                 .and()
                 .formLogin() //определяет локацию страницы логина
-                    .loginPage("/login") // у Spring Security есть собственная страница по умолчанию
-                    .permitAll() //гарантия того что все пользователи имеют доступ к этой странице
+                    .loginPage("/loginPage") // у Spring Security есть собственная страница по умолчанию
+                    .permitAll(true) //гарантия того что все пользователи имеют доступ к этой странице
                 .and()
                 .logout()//обеспечивает выход из системы (есть расширяющие свойства)
                   //  .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -89,17 +99,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web){
         web
                 .ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
     }
 
-  /*  @Bean
+    @Bean
     public BCryptPasswordEncoder passwordEncoder() {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        return bCryptPasswordEncoder;
-    }*/
-
-
+        cryptPasswordEncoder = new BCryptPasswordEncoder();
+        return cryptPasswordEncoder;
+    }
 }

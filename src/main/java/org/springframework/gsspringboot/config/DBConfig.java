@@ -1,6 +1,6 @@
-package org.springframework.gsspringboot.config;
+/*package org.springframework.gsspringboot.config;
 
-/*import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -12,9 +12,8 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableTransactionManagement*/
+@EnableTransactionManagement
 public class DBConfig {
-/*
 
     @Value("${db.driver}")   private String DB_DRIVER;
     @Value("${db.url}")      private String DB_URL;
@@ -58,6 +57,5 @@ public class DBConfig {
         transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
     }
-*/
 
-}
+}*/

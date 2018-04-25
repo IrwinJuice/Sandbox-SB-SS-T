@@ -21,8 +21,7 @@ figure h1{
 }
 #btn-login{
     color: #f76054;
-    background-color: transparent;
-    background-image: none;
+    background-color: transparent;    background-image: none;
     border-color: #f76054;
 }
 #btn-login:hover {
@@ -41,4 +40,20 @@ figure h1{
     color: #fff;
     background-color: #f76054;
     border-color: #f76054;
+}
+.carousel{
+    margin: 20px auto;
+    max-width: 1000px;
+}
+.carousel-item img{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.carousel-caption{
+    text-align: left;
+    right: 10%;
+    left: 10%;
+    bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }

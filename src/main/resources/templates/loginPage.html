@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/base :: common_head(~{::title},~{::link})">
+    <title>Complete</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+
+<body>
+<div class="container">
+    <form th:action="@{/loginPage}" method="post">
+        <div th:if = "${param.error}"> <!-- вернет параметр запроса с именем X -->
+            <div class="alert alert-danger">
+                Invalid username and password.
+            </div>
+        </div>
+        <div th:if="${param.logout}">
+            <div class="alert alert-info">
+                You have been logged out.
+            </div>
+        </div>
+        <p>
+            <input type="text" id="username" name="username"  placeholder="UserName" required="true" autofocus="true"/>
+        </p>
+        <p>
+            <input type="password" id="password" name="password" placeholder="Password" required="true"/>
+        </p>
+        <form>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"/>
+            </div>
+        </form>
+    </form>
+</div>
+</body>
+</html>

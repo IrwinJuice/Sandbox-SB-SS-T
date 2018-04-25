@@ -10,7 +10,8 @@
             th:src="@{/js/jquery-3.3.1.min.js}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             th:src="@{/js/bootstrap.min.js}"></script>
-    <script  th:src="@{/js/login.js}"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           th:href="@{/css/bootstrap.min.css}">
@@ -18,50 +19,86 @@
 
     <link rel="shortcut icon" th:href="@{/images/icon.png}">
     <!--/* Per-page placeholder for additional links */-->
-     <th:block th:replace="${links}"/>
+    <th:block th:replace="${links}"/>
+    <!--Из-за неизвестного количества линков -->
     <!--th:block -  единственный элементный процессор (а не атрибут), включенный в стандартные диалекты-->
     <!--th: block - это простой контейнер атрибутов, который позволяет разработчикам
      шаблонов указывать какие атрибуты они хотят.
       Thymeleaf выполнит эти атрибуты, а затем просто сделает блок незаметным.-->
 </head>
 <body>
-<div th:fragment="header_home">
-    <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
-        <a class="navbar-brand" th:href="@{/}">Complete</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<div th:fragment="header_common">
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
+        <a class="navbar-brand" style="font-family: Roboto, serif" th:href="@{/}">VINYL UNION</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-
+                <ul class="navbar-nav ml-auto" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAdd" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Add...
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" th:href="@{#}">Add new account</a>
+                            <a class="dropdown-item" th:href="@{#}">Add new </a>
+                            <a class="dropdown-item" th:href="@{#}">Add </a>
+                        </div>
+                    </li>
+                    <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
+                        <a class="nav-link" th:href="@{#}">Storage</a>
+                    </li>
+                </ul>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHelp" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Help
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Support</a>
-                        <a class="dropdown-item" href="#">Community</a>
+                        <a class="dropdown-item" th:href="@{#}">Support</a>
+                        <a class="dropdown-item" th:href="@{#}">Community</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Restore the password</a>
+                        <a class="dropdown-item" th:href="@{#}">Restore the password</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a id="btn-login" class="btn my-2 my-sm-0" th:href="@{/login}"><i class="fa fa-user"></i>LOGIN</a>
+                   <!-- Стандарт синтаксиса Выражений/Standard Expression Syntax и
+                   выражения OGNL (Object-Graph Navigation Language)-->
+                    <!--В Spring OGNL заменен на SpringEL, но его синтаксис фактически,
+                    точно такой же для большинства распространенных случаев).-->
+                    <!--https://habrahabr.ru/post/350870/-->
+                    <div th:switch="${#authorization.expression('isAuthenticated()')}">
+                                    <!-- authentication обект авторизированого пользователя -->
+                        <!--${#authorization.expression('isAuthenticated()')} - возвращает true если юзер авторизирован-->
+                        <span th:case="${false}"><a id="btn-login" class="btn my-2 my-sm-0" th:href="@{/loginPage}"><i class="fa fa-user"></i>LOGIN</a></span>
+                        <span th:case="${true}">
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdownHelpAccount" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span sec:authentication="name"></span>
+                                    <!--sec:authentication - используется для отображения имени залогиневшегося и его роли-->
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" th:href="@{#}">Settings</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a  class="btn my-2 my-sm-0" th:href="@{/logout}">Logout</a>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
                 </li>
             </ul>
         </div>
     </nav>
 </div>
-
 <div th:fragment="footer"><!--id фрагмента-->
     <!--th:fragment - часть, которая будет повторятся на всех страницах.
      Например - footer, header. -->
