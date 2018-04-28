@@ -16,10 +16,10 @@ public class DefaultController {
         return "completeMP";
     }
 
-    @GetMapping("/completeAP")
-    public String admin() {
-        return "completeAP";
-    }
+    /*@GetMapping("/completeAP")
+    public String completeAP() {
+        return "completeApp/completeAP";
+    }*/
 
     @GetMapping("/user")
     public String user() {

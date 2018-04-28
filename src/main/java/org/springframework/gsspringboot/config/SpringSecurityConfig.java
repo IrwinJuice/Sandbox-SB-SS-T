@@ -66,7 +66,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()  /*csrf = Cross Site Request Forgery (Межсайтовая подделка запроса)
                                     .csrf().disable() - отключена*/
                 .authorizeRequests() //Позволяет ограничивать доступ на основе HttpServletRequest
-                    .antMatchers("/", "/vinylShop", "/completeMP", "/about").permitAll()
+                    .antMatchers("/", "/vinylApp", "/completeMP", "/about").permitAll()
                     //.antMatchers - Позволяет настроить HttpSecurity, для вызова при совпадении паттернов
                     //.permitAll() - доступно всем пользователям
                         //   com/t?st.jsp - matches com/test.jsp but also com/tast.jsp or com/txst.jsp
@@ -77,7 +77,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         //  also org/springframework/testing/servlet/bla.jsp and org/servlet/bla.jsp
                         //   com/{filename:\\w+}.jsp will match com/test.jsp and assign the value test to the filename variable
 
-                .antMatchers("/completeAP").hasAnyRole("ROLE_ADMIN")
+                .antMatchers("/completeAPP/**").hasAnyRole("ROLE_ADMIN")
                     //.hasAnyRole - доступно только пользователям с указаной ролью
 
                    /* .antMatchers("/user/**").hasAnyRole("ROLE_USER")*/

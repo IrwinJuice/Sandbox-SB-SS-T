@@ -53,6 +53,9 @@
                     <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
                         <a class="nav-link" th:href="@{#}">Storage</a>
                     </li>
+                    <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
+                        <a class="nav-link" th:href="@{/completeAP}">completeAP</a>
+                    </li>
                 </ul>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHelp" role="button"

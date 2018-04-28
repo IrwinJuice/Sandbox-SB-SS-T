@@ -5,7 +5,6 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.gsspringboot.model.Role;
 import org.springframework.gsspringboot.model.User;
-import org.springframework.gsspringboot.repository.RoleRepository;
 import org.springframework.gsspringboot.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
