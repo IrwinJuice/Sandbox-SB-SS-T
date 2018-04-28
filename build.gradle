@@ -1,0 +1,27 @@
+buildscript{
+    ext{
+        springBootVersion = "2.0.1.RELEASE"
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+}
+
+group = 'org.springframework'
+artifact = 'gs-spring-boot'
+sourceCompatibility = 1.8
+
+jar {
+    baseName = 'Vinyl UNION'
+    version =  '0.1.0'
+}
+
+dependencies{
+    compile('')
+}
