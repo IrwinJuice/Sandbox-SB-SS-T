@@ -38,15 +38,12 @@
             <label for="quantity">Quantity</label>
             <input type="text" id="quantity" name="quantity">
         </div>
-        <div class="form-group">
-            <label for="formControlFile1">Example file input</label>
-            <input type="file"  name="file" class="form-control-file" id="formControlFile1" accept="image/*">
-        </div>
+
         <input type="submit" value="ДОБАВИТЬ">
     </form>
 </fieldset>-->
 <fieldset>
-    <form th:action="@{/completeAP}" th:object="${vinyl}" method="POST">
+    <form th:action="@{/completeAP}" th:object="${vinyl}" method="POST" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Title</td>
@@ -64,6 +61,10 @@
                 <td>Quantity</td>
                 <td><input type="text" th:field="*{quantity}" /> </td>
             </tr>
+            <tr>
+                <input type="file"  name="file" class="form-control-file" id="formControlFile1" accept="image/*">
+            </tr>
+            <tr>
                 <td>
                     <input type="submit" value="Submit" />
                     <a th:href="@{/}">Cancel</a>
