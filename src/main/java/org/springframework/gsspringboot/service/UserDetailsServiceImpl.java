@@ -1,7 +1,5 @@
 package org.springframework.gsspringboot.service;
 
-
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.gsspringboot.model.Role;
 import org.springframework.gsspringboot.model.User;
@@ -17,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
 @Service("userDetailsServiceImpl")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
