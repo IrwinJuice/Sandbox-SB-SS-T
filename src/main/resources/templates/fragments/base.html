@@ -30,7 +30,10 @@
 
 <div th:fragment="header_common">
     <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
-        <a class="navbar-brand" style="font-family: Roboto, serif" th:href="@{/}">VINYL UNION</a>
+        <div class="brand">
+            <a class="navbar-brand" style="font-family: Roboto, serif" th:href="@{/}">
+                <img th:src="@{/images/icons/logo.png}" style="height: 40px; width: 40px"/>VINYL UNION</a>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">

@@ -5,22 +5,5 @@
         }
     });
 });*/
-function addNewVinyl(event) {
-    jQuery.ajax({
-        type: 'POST',
-        url: '/completeApp/addNewVinyl',
-        data: {
-            title:    jQuery('#title').val(),
-            artist: jQuery('#artist').val(),
-            price:   jQuery('#price').val(),
-            quantity:   jQuery('#quantity').val()
-        /*    file: $('#file').val()*/
-        },
-        success: function () {
-            event.preventDefault();
-        },
-        error: function ( errorThrown ) {
-            console.log(errorThrown);
-        }
-    });
-}
+
+jQuery(document)

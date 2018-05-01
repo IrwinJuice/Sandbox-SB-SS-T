@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/base :: common_head(~{::title},~{::link})">
-    <title>Vinyl</title>
+    <title>VINYL UNION</title>
     <link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 
@@ -20,10 +20,11 @@
          </table>
      </fieldset>
  </div>-->
+<!--
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="images/vinil/imgs_bd_vinil/vin6.jpg"/>
+    <div class="carousel-inner" th:action="@{/carousel}" th:object="${carousel}" th:method="GET">
+        <div class="carousel-item active" >
+            <img class="d-block w-100" th:src="*{srcSlide1}"/>
             <div class="carousel-caption d-none d-md-block">
                 <h5>VINYL NAME 1</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -60,6 +61,7 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+-->
 
 <script th:src="@{/js/vinylboard.js}"></script>
 </body>

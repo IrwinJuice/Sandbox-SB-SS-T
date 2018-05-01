@@ -7,7 +7,8 @@ import javax.persistence.*;
 public class Vinyl {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "idGenerator", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idGenerator")
     private Long id;
 
     @Column(name = "image_link")

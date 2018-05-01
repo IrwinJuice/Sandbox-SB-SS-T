@@ -10,7 +10,7 @@ buildscript{
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("org.thymeleaf:thymeleaf:${thymeleafVersion}")
         classpath("org.thymeleaf:thymeleaf-spring5:${thymeleafVersion}")
-
+        /*https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf/*/
     }
 }
 apply plugin: 'java'

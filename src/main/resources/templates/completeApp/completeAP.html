@@ -18,32 +18,8 @@
 
 </div>-->
 <!-- /.container -->
-<!--<script th:src="@{/js/aam.js}"></script>
 <fieldset>
-    <legend>First slide</legend>
-    <form onsubmit="addNewVinyl(event)" enctype="multipart/form-data" >
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title">
-        </div>
-        <div class="form-group">
-            <label for="artist">Artist</label>
-            <input type="text" id="artist" name="artist">
-        </div>
-        <div class="form-group">
-            <label for="price">Price</label>
-            <input type="text" id="price" name="price">
-        </div>
-        <div class="form-group">
-            <label for="quantity">Quantity</label>
-            <input type="text" id="quantity" name="quantity">
-        </div>
-
-        <input type="submit" value="ДОБАВИТЬ">
-    </form>
-</fieldset>-->
-<fieldset>
-    <form th:action="@{/completeAP}" th:object="${vinyl}" method="POST" enctype="multipart/form-data">
+    <form th:object="${vinyl}" method="POST" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>Title</td>

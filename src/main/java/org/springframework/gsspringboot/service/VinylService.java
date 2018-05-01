@@ -5,6 +5,7 @@ import org.springframework.gsspringboot.model.Vinyl;
 import org.springframework.gsspringboot.repository.VinylRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 @Service("vinylService")
 public class VinylService {
@@ -21,6 +22,10 @@ public class VinylService {
 
     public void saveVinyl(Vinyl vinyl){
         vinylRepository.save(vinyl);
+    }
+
+    public List<Vinyl> getAllVinyl(){
+        return vinylRepository.findAll();
     }
 
 }
