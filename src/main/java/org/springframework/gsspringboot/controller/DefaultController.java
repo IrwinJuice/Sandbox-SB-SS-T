@@ -6,11 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class DefaultController {
 
-    @GetMapping({"/", "/vinylShop"})
-    public String shopMainPage(){
-        return "vinylApp/vinylApp";
-    }
-
     @GetMapping("/completeMP")
     public String completeMP(){
         return "completeMP";

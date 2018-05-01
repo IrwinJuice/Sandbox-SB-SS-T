@@ -123,5 +123,17 @@
         </footer>
     </div>
 </div>
+<div th:fragment="carousel">
+    <div th:each="slide : ${carousel}">
+        <div class="carousel-item active">
+            <img class="d-block w-100" th:src="${slide.getImageLink()}"/>
+            <div class="carousel-caption d-none d-md-block">
+                <h5 th:text="${slide.getArtist()}">VINYL NAME 1</h5>
+                <p th:text="${slide.getTitle()}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
