@@ -37,6 +37,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-tomcat')
+    compile('org.springframework.boot:spring-boot-starter-websocket')
     runtime('org.springframework.boot:spring-boot-devtools')
 
     compile('org.thymeleaf:thymeleaf')
@@ -53,4 +54,6 @@ dependencies {
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.security:spring-security-test')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '2.0.1.RELEASE'
+
 }
