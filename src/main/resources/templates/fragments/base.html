@@ -34,6 +34,10 @@
             <a class="navbar-brand" style="font-family: Roboto, serif" th:href="@{/}">
                 <img th:src="@{/images/icons/logo.png}" style="height: 40px; width: 40px"/>VINYL UNION</a>
         </div>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -49,15 +53,15 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" th:href="@{#}">Add new account</a>
-                            <a class="dropdown-item" th:href="@{#}">Add new </a>
+                            <a class="dropdown-item" th:href="@{#}">Add new request</a>
                             <a class="dropdown-item" th:href="@{#}">Add </a>
                         </div>
                     </li>
                     <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
-                        <a class="nav-link" th:href="@{#}">Storage</a>
+                        <a class="nav-link" th:href="@{#}">Stock</a>
                     </li>
                     <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
-                        <a class="nav-link" th:href="@{/completeAP}">completeAP</a>
+                        <a class="nav-link" th:href="@{/administration-page}">Dashboard</a>
                     </li>
                 </ul>
                 <li class="nav-item dropdown">

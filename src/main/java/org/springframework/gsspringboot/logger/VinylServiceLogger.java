@@ -11,7 +11,7 @@ class VinylServiceLogger {
     private final Logger logger =
             LoggerFactory.getLogger(VinylServiceLogger.class);
 
-    @Pointcut("execution(* org.springframework.gsspringboot.service.VinylService.addNewVinyl(..))")
+    @Pointcut("execution(* org.springframework.gsspringboot.service.VinylService.saveVinyl(..))")
     private void createPointcut() {
     }
     @Before("createPointcut()")

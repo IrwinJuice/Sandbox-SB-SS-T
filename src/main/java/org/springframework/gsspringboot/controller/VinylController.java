@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.thymeleaf.ITemplateEngine;
-import org.thymeleaf.context.WebContext;
+
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,9 +20,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @Controller
@@ -42,16 +38,16 @@ public class VinylController {
         this.carouselService = carouselService;
     }
 
-    @RequestMapping(value = "/completeAP", method = RequestMethod.GET)
+    @RequestMapping(value = "/administration-page", method = RequestMethod.GET)
     public ModelAndView showAdminPage(ModelAndView modelAndView,
                                       Vinyl vinyl) {
         modelAndView.addObject("vinyl",
                                vinyl);
-        modelAndView.setViewName("completeApp/completeAP");
+        modelAndView.setViewName("admin/administration-page");
         return modelAndView;
     }
 
-    @RequestMapping(value = "/completeAP", method = RequestMethod.POST)
+    @RequestMapping(value = "/administration-page", method = RequestMethod.POST)
     public ModelAndView processAddNewVinyl(ModelAndView modelAndView,
                                            @Valid Vinyl vinyl,
                                            /*BindingResult bindingResult,
@@ -69,7 +65,7 @@ public class VinylController {
 
         vinyl.setImageLink(DB_PATH + file.getOriginalFilename());
         vinylService.saveVinyl(vinyl);
-        modelAndView.setViewName("completeApp/completeAP");
+        modelAndView.setViewName("admin/administration-page");
         return modelAndView;
     }
 
@@ -77,8 +73,7 @@ public class VinylController {
     public ModelAndView mainPage(ModelAndView modelAndView){
 
          List<Carousel> getSliders = carouselService.getAllSlides();
-        System.out.println(getSliders.size()+"*****************************************");
-        //Передавать лис а не обьект
+
         modelAndView.addObject("carousel", getSliders);
         modelAndView.setViewName("vinylApp/vinylApp");
         return modelAndView;

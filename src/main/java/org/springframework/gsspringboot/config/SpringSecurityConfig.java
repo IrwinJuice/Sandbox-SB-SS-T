@@ -29,37 +29,32 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @Autowired
 
+    /*
+    //AuthenticationManagerBuilder - позволяет легко создать аутентификацию, в пямяти, в JDBC, LDAP
+    //inMemoryAuthentication - создает аутентификацию в памяти
+
+    auth.inMemoryAuthentication()
+        .withUser("user123").password("{noop}qwe").roles("USER")
+        .and()
+        .withUser("templates/admin").password("{noop}password").roles("ADMIN");
+     */
+    // Нам нужен префикс {noop} так как:
+    // В spring-security-core:5.0.0.RC1 по умолчанию
+    // PasswordEncoder построен как DelegatingPasswordEncoder.
+    // Когда вы храните пароль пользователя в памяти,
+    // вы храниете его в виде обычного текста и
+    // а при введении пароля на сайте, он проходит шифрование через DelegatingPasswordEncoder
+    // при попытке сравнить два пароля вылетит ошибка
+    //https://spring.io/blog/2017/11/01/spring-security-5-0-0-rc1-released#password-encoding
+    @Autowired
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(cryptPasswordEncoder);
-        //AuthenticationManagerBuilder - позволяет легко создать аутентификацию, в пямяти, в JDBC, LDAP
-
-        /*auth.inMemoryAuthentication()*/
-                //inMemoryAuthentication - создает аутентификацию в памяти
-
-               /* .withUser("user123").password("{noop}qwe").roles("USER")*/
-
-                // Нам нужен префикс {noop} так как:
-                // В spring-security-core:5.0.0.RC1 по умолчанию
-                // PasswordEncoder построен как DelegatingPasswordEncoder.
-                // Когда вы храните пароль пользователя в памяти,
-                // вы храниете его в виде обычного текста и
-                // а при введении пароля на сайте, он проходит шифрование через DelegatingPasswordEncoder
-                // при попытке сравнить два пароля вылетит ошибка
-                //https://spring.io/blog/2017/11/01/spring-security-5-0-0-rc1-released#password-encoding
-
-                /*************
-                .and()
-                .withUser("templates/admin").password("{noop}password").roles("ADMIN");*/
     }
 
-    // roles admin allow to access /admin/**
-    // roles user allow to access /user/**
-    // custom 403 access denied handler
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
@@ -77,10 +72,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         //  also org/springframework/testing/servlet/bla.jsp and org/servlet/bla.jsp
                         //   com/{filename:\\w+}.jsp will match com/test.jsp and assign the value test to the filename variable
 
-                .antMatchers("/completeAPP/**").hasAnyRole("ROLE_ADMIN")
+                .antMatchers("/admin/**").hasAnyRole("ROLE_ADMIN")
                     //.hasAnyRole - доступно только пользователям с указаной ролью
 
-                   /* .antMatchers("/user/**").hasAnyRole("ROLE_USER")*/
+                    .antMatchers("/user/**").hasAnyRole("ROLE_USER")
 
                     .anyRequest().authenticated() //Любые други запросы требуют аутентификации
                 .and()
