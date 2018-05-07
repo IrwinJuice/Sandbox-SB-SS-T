@@ -16,11 +16,14 @@ buildscript{
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
 
 group = 'org.springframework'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+applicationDefaultJvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"]
 
 bootJar {
     baseName = 'gs-spring-boot'
@@ -30,6 +33,9 @@ repositories {
     mavenCentral()
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.7'
+}
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-aop')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')

@@ -2,7 +2,10 @@ package org.springframework.gsspringboot.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class DefaultController {
@@ -22,9 +25,10 @@ public class DefaultController {
         return "about";
     }
 
-    @GetMapping("/signin")
-    public String signin() {
-        return "signin";
+    @GetMapping(value = "/signin")
+    public ModelAndView signin(ModelAndView modelAndView) {
+        modelAndView.setViewName("signin");
+        return modelAndView;
     }
 
     @GetMapping("/403")
