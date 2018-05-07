@@ -61,7 +61,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()  /*csrf = Cross Site Request Forgery (Межсайтовая подделка запроса)
                                     .csrf().disable() - отключена*/
                 .authorizeRequests() //Позволяет ограничивать доступ на основе HttpServletRequest
-                    .antMatchers("/", "/vinylApp", "/completeMP", "/about").permitAll()
+                    .antMatchers("/", "/vinylShop", "/about").permitAll()
                     //.antMatchers - Позволяет настроить HttpSecurity, для вызова при совпадении паттернов
                     //.permitAll() - доступно всем пользователям
                         //   com/t?st.jsp - matches com/test.jsp but also com/tast.jsp or com/txst.jsp
@@ -74,13 +74,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/admin/**").hasAnyRole("ROLE_ADMIN")
                     //.hasAnyRole - доступно только пользователям с указаной ролью
-
-                    .antMatchers("/user/**").hasAnyRole("ROLE_USER")
-
-                    .anyRequest().authenticated() //Любые други запросы требуют аутентификации
+                .antMatchers("/user/**").hasAnyRole("ROLE_USER")
+                .anyRequest().authenticated() //Любые други запросы требуют аутентификации
                 .and()
                 .formLogin() //определяет локацию страницы логина
-                    .loginPage("/loginPage") // у Spring Security есть собственная страница по умолчанию
+                    .loginPage("/signin") // у Spring Security есть собственная страница по умолчанию
                     .permitAll(true) //гарантия того что все пользователи имеют доступ к этой странице
                 .and()
                 .logout()//обеспечивает выход из системы (есть расширяющие свойства)

@@ -3,18 +3,18 @@
 
 <head th:fragment="common_head(title, links)">
     <!--параметризированый фрагмент-->
-    <title th:replace="${title}">The awesome application</title>
+    <title th:replace="${title}">VINYL UNION</title>
     <!-- Common styles and scripts -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-            th:src="@{/js/jquery-3.3.1.min.js}"></script>
+            th:src="@{/js/resources/jquery-3.3.1.min.js}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            th:src="@{/js/bootstrap.min.js}"></script>
+            th:src="@{/js/resources/bootstrap.min.js}"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          th:href="@{/css/bootstrap.min.css}">
+          th:href="@{/css/resources/bootstrap.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 
     <link rel="shortcut icon" th:href="@{/images/icon.png}">
@@ -57,10 +57,10 @@
                             <a class="dropdown-item" th:href="@{#}">Add </a>
                         </div>
                     </li>
-                    <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
+                    <li sec:authorize="hasRole('ADMIN')" class="nav-item ">
                         <a class="nav-link" th:href="@{#}">Stock</a>
                     </li>
-                    <li sec:authorize="hasRole('ADMIN')" class="nav-item active">
+                    <li sec:authorize="hasRole('ADMIN')" class="nav-item ">
                         <a class="nav-link" th:href="@{/administration-page}">Dashboard</a>
                     </li>
                 </ul>
@@ -88,7 +88,8 @@
                     <div th:switch="${#authorization.expression('isAuthenticated()')}">
                                     <!-- authentication обект авторизированого пользователя -->
                         <!--${#authorization.expression('isAuthenticated()')} - возвращает true если юзер авторизирован-->
-                        <span th:case="${false}"><a id="btn-login" class="btn my-2 my-sm-0" th:href="@{/loginPage}"><i class="fa fa-user"></i>LOGIN</a></span>
+                        <span th:case="${false}"><a id="btn-login" class="btn my-2 my-sm-0" th:href="@{/signin}">
+                            <i class="fa fa-user"></i>SIGN-IN</a></span>
                         <span th:case="${true}">
                             <div class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdownHelpAccount" role="button"
