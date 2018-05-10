@@ -75,11 +75,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAnyRole("ROLE_ADMIN")
                     //.hasAnyRole - доступно только пользователям с указаной ролью
                 .antMatchers("/user/**").hasAnyRole("ROLE_USER")
-                .anyRequest().authenticated() //Любые други запросы требуют аутентификации
+               /* .anyRequest().authenticated()*/ //Любые други запросы требуют аутентификации
                 .and()
                 .formLogin() //определяет локацию страницы логина
                     .loginPage("/signin") // у Spring Security есть собственная страница по умолчанию
-                    .permitAll(true) //гарантия того что все пользователи имеют доступ к этой странице
+                    .permitAll(true)//гарантия того что все пользователи имеют доступ к этой странице
                 .and()
                 .logout()//обеспечивает выход из системы (есть расширяющие свойства)
                   //  .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
