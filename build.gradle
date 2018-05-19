@@ -62,5 +62,8 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('org.springframework.security:spring-security-test')
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '2.0.1.RELEASE'
+    compile "org.projectlombok:lombok:1.16.20"
+    compile group: 'org.projectlombok', name: 'lombok-utils', version: '1.16.20'
+
 
 }

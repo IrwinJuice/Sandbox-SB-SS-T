@@ -6,10 +6,7 @@ import org.springframework.gsspringboot.model.Vinyl;
 import org.springframework.gsspringboot.service.CarouselService;
 import org.springframework.gsspringboot.service.VinylService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -73,11 +70,17 @@ public class VinylController {
     public ModelAndView mainPage(ModelAndView modelAndView){
 
          List<Carousel> getSliders = carouselService.getAllSlides();
+        List<Vinyl> getVinyls = vinylService.getAllVinyl();
 
         modelAndView.addObject("carousel", getSliders);
+        modelAndView.addObject("vinyls", getVinyls);
         modelAndView.setViewName("vinylApp/vinylApp");
         return modelAndView;
     }
-
+ /*   @RequestMapping(value = {"/", "/vinylShop"}, method = RequestMethod.POST)
+    public ModelAndView addToCard(ModelAndView modelAndView,
+                                  @RequestParam("vinylId") Long id){
+        
+    }*/
 }
 

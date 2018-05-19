@@ -96,7 +96,8 @@ figure h1{
     border-color: #f76054;
 }
 .carousel{
-    margin: 20px auto;
+
+    margin: 100px auto 40px auto;
     max-width: 700px;
 }
 .carousel-item img{
@@ -111,24 +112,17 @@ figure h1{
     padding-top: 10px;
     padding-bottom: 5px;
 }
-.central-block{
-    display: block;
+.card-deck{
+    max-width: 1200px;
     margin: 0 auto;
-    padding-left: 10px;
-    max-width: 1024px;
-    min-height: 350px;
-    position: relative;
 }
-
 .card {
-    width: 15rem;
-    margin: 10px 10px 10px 0;
-    display: inline-block;
+    min-width:15rem;
+    max-width:15rem;
+    margin-bottom: 10px;
+    position: relative;
+    left: 60px;
 }
 .card:hover {
     box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
-
-}
-.card-body > .btn{
-
 }

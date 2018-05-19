@@ -29,7 +29,7 @@
 <body>
 
 <div th:fragment="header_common">
-    <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark  bg-dark ">
         <div class="brand">
             <a class="navbar-brand" style="font-family: Roboto, serif" th:href="@{/}">
                 <img th:src="@{/images/icons/logo.png}" style="height: 40px; width: 40px"/>VINYL UNION</a>
@@ -64,6 +64,11 @@
                         <a class="nav-link" th:href="@{/administration-page}">Dashboard</a>
                     </li>
                 </ul>
+                <li class="nav-item" >
+                    <a class="nav-link" href="#">
+                        <img th:src="@{/images/icons/icons8_Shopping_Cart_96px.png}" style="height: 40px; width: 40px">
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHelp" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

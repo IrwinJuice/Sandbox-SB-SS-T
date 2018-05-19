@@ -24,6 +24,10 @@ public class VinylService {
         vinylRepository.save(vinyl);
     }
 
+    public Vinyl getOne(Long id){
+        return vinylRepository.getOne(id);
+    }
+
     public List<Vinyl> getAllVinyl(){
         return vinylRepository.findAll();
     }
