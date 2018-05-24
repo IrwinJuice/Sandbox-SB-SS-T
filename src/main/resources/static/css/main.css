@@ -126,3 +126,6 @@ figure h1{
 .card:hover {
     box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
 }
+.pc{
+    color: #6c757d;
+}

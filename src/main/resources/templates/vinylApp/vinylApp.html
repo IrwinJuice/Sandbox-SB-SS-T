@@ -46,12 +46,12 @@
                 <div class="card-body">
                     <h5 class="card-title" th:text="${vinyl.getTitle()}">Card title</h5>
                     <p class="card-text" th:text="${vinyl.getArtist()}">Some quick example</p>
-                    <p id="idtest" class="card-text" th:text="${vinyl.getId()}">id</p>
                     <div>
-                        <button class="btn btn-secondary" type="button" onclick="addCartToLocalStorage()">Buy</button>
-                      <!--  <input class="btn btn-secondary" type="submit" value="Buy" onclick="addCartToLocalStorage()"/>-->
+                         <button th:id="${vinyl.getId()}" class="btn btn-secondary" type="button" onclick="addCartToLocalStorage(this.id)">Buy</button>
+                      <a href="#" class="btn btn-secondary">Details</a>
                     </div>
-                    <a href="#" class="btn btn-secondary">Details</a>
+                    <br>
+               <!--     <p th:id="${vinyl.getId()}+id" class="pc" th:text="'Product code: ' + ${vinyl.getId()}">id</p>-->
                 </div>
             </div>
     </span>

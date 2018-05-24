@@ -5,14 +5,9 @@ jQuery(function ($) {
         });
     });
 });
-
-function addCartToLocalStorage() {
-
-    var vinylId = document.getElementById('idtest').innerText;///////////////////////////////////// ID
-    console.log(vinylId);
-/* /!*   var vinylId = vinyl/!*[[${vinyl.getId}]]*!/ ;*!/
-    var randomKey = 'cardKey' + Math.floor(Math.random() * 100);
-    localStorage.setItem(randomKey, vinylId);
-    var localValue = localStorage.getItem(randomKey);
-    console.log(localValue);*/
+function addCartToLocalStorage(id) {
+    var getId = id;
+    var cardKey = "ID" +  id;
+    localStorage.setItem(cardKey, getId);
+    console.log(cardKey);
 }
