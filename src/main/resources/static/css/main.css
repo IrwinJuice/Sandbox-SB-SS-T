@@ -1,110 +1,134 @@
-body{
+body {
     background-color: #1c1a1a;
 }
+
 figure {
     max-width: 1200px;
-    margin: 0 auto;
-    margin-top: 100px;
+    margin: 100px auto 0;
 }
+
 figure img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-figure h1{
+
+figure h1 {
     font-size: 8vmin;
-    font-weight: bold ;
+    font-weight: bold;
     /*text-shadow: 3px 3px 10px rgba(247, 96, 84, 0.8);*/
     color: #fff;
-    position	: absolute;
+    position: absolute;
     left: 15vmax;
 }
-#search-box{
+
+#search-box {
     display: inline;
     float: left;
 }
-#login-dp{
+
+#login-dp {
     min-width: 250px;
     padding: 14px 14px 0;
-    overflow:hidden;
-    background-color:rgba(255,255,255,.8);
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, .8);
 }
-#login-dp .help-block{
-    font-size:12px
+
+#login-dp .help-block {
+    font-size: 12px
 }
-#login-dp .bottom{
-    background-color:rgba(255,255,255,.8);
-    border-top:1px solid #ddd;
-    clear:both;
-    padding:14px;
+
+#login-dp .bottom {
+    background-color: rgba(255, 255, 255, .8);
+    border-top: 1px solid #ddd;
+    clear: both;
+    padding: 14px;
 }
-#login-dp .social-buttons{
-    margin:12px 0
+
+#login-dp .social-buttons {
+    margin: 12px 0
 }
-#login-dp .social-buttons a{
+
+#login-dp .social-buttons a {
     width: 49%;
 }
+
 #login-dp .form-group {
     margin-bottom: 10px;
 }
-.btn-fb{
+
+.btn-fb {
     color: #fff;
-    background-color:#3b5998;
+    background-color: #3b5998;
 }
-.btn-fb:hover{
+
+.btn-fb:hover {
     color: #fff;
-    background-color:#496ebc
+    background-color: #496ebc
 }
-.btn-tw{
+
+.btn-tw {
     color: #fff;
-    background-color:#55acee;
+    background-color: #55acee;
 }
-.btn-tw:hover{
+
+.btn-tw:hover {
     color: #fff;
-    background-color:#59b5fa;
+    background-color: #59b5fa;
 }
-@media(max-width:768px){
-    #login-dp{
+
+@media (max-width: 768px) {
+    #login-dp {
         background-color: inherit;
         color: #fff;
     }
-    #login-dp .bottom{
+
+    #login-dp .bottom {
         background-color: inherit;
-        border-top:0 none;
+        border-top: 0 none;
     }
 }
-#btn-login{
+
+#btn-login {
     color: #f76054;
-    background-color: transparent;    background-image: none;
+    background-color: transparent;
+    background-image: none;
     border-color: #f76054;
 }
+
 #btn-login:hover {
     color: #fff;
     background-color: #f76054;
     border-color: #f76054;
 }
-#btn-login:focus{
+
+#btn-login:focus {
     box-shadow: 0 0 0 0.2rem rgba(162, 65, 57, 0.5);
 }
+
 #btn-login:disabled {
     color: #f76054;
     background-color: transparent;
 }
+
 #btn-login:not(:disabled):not(.disabled):active {
     color: #fff;
     background-color: #f76054;
     border-color: #f76054;
 }
-.carousel{
+
+.carousel {
 
     margin: 100px auto 40px auto;
     max-width: 700px;
 }
-.carousel-item img{
+
+.carousel-item img {
     max-width: 700px;
     margin: 0 auto;
 }
-.carousel-caption{
+
+.carousel-caption {
     text-align: left;
     right: 10%;
     left: 10%;
@@ -112,20 +136,41 @@ figure h1{
     padding-top: 10px;
     padding-bottom: 5px;
 }
-.card-deck{
+
+.card-deck {
     max-width: 1200px;
     margin: 0 auto;
 }
+
 .card {
-    min-width:15rem;
-    max-width:15rem;
+    min-width: 15rem;
+    max-width: 15rem;
     margin-bottom: 10px;
     position: relative;
     left: 60px;
 }
+
 .card:hover {
     box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
 }
-.pc{
+
+.pc {
     color: #6c757d;
+}
+
+#card-img {
+    position: relative;
+}
+
+#amount {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    top: -7px;
+    left: 13px;
+    background-color: #f76054;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
 }

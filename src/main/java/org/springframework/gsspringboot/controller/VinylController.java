@@ -24,6 +24,9 @@ public class VinylController {
 
     private final String UPLOAD_FOLDER = "D:\\Documents\\Projects\\ShopOnSB\\src\\main\\resources\\static\\images\\vinil\\imgs_bd_vinil\\";
     private final String DB_PATH       = "images/vinil/imgs_bd_vinil/";
+    private final String ADMIN_PAGE = "/administration-page";
+    private final String VINYL_PAGE = "/vinylShop";
+
 
     private VinylService    vinylService;
     private CarouselService carouselService;
@@ -35,7 +38,7 @@ public class VinylController {
         this.carouselService = carouselService;
     }
 
-    @RequestMapping(value = "/administration-page", method = RequestMethod.GET)
+    @RequestMapping(value = ADMIN_PAGE, method = RequestMethod.GET)
     public ModelAndView showAdminPage(ModelAndView modelAndView,
                                       Vinyl vinyl) {
         modelAndView.addObject("vinyl",
@@ -44,7 +47,7 @@ public class VinylController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/administration-page", method = RequestMethod.POST)
+    @RequestMapping(value = ADMIN_PAGE, method = RequestMethod.POST)
     public ModelAndView processAddNewVinyl(ModelAndView modelAndView,
                                            @Valid Vinyl vinyl,
                                            /*BindingResult bindingResult,
@@ -66,7 +69,7 @@ public class VinylController {
         return modelAndView;
     }
 
-    @GetMapping({"/", "/vinylShop"})
+    @GetMapping({"/", VINYL_PAGE})
     public ModelAndView mainPage(ModelAndView modelAndView){
 
          List<Carousel> getSliders = carouselService.getAllSlides();
@@ -77,10 +80,5 @@ public class VinylController {
         modelAndView.setViewName("vinylApp/vinylApp");
         return modelAndView;
     }
- /*   @RequestMapping(value = {"/", "/vinylShop"}, method = RequestMethod.POST)
-    public ModelAndView addToCard(ModelAndView modelAndView,
-                                  @RequestParam("vinylId") Long id){
-        
-    }*/
 }
 

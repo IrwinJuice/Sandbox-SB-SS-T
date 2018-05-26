@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base :: common_head(~{::title},~{::link})">
+    <meta charset="UTF-8">
+    <title>VINYL UNION</title>
+    <link rel="stylesheet" th:href="@{/#}">
+</head>
+<body>
+<div th:replace="fragments/base :: header_common"></div>
+
+<script th:src="@{/js/cart.js}"></script>
+</body>
+</html>

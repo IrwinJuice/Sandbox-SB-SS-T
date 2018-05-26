@@ -10,6 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class DefaultController {
 
+    private final String SIGNIN_PAGE = "/signin";
+
+
     @GetMapping("/completeMP")
     public String completeMP(){
         return "completeMP";
@@ -25,7 +28,7 @@ public class DefaultController {
         return "about";
     }
 
-    @GetMapping(value = "/signin")
+    @GetMapping(value = SIGNIN_PAGE)
     public ModelAndView signin(ModelAndView modelAndView) {
         modelAndView.setViewName("signin");
         return modelAndView;

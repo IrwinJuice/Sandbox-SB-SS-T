@@ -16,7 +16,6 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           th:href="@{/css/resources/bootstrap.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-
     <link rel="shortcut icon" th:href="@{/images/icon.png}">
     <!--/* Per-page placeholder for additional links */-->
     <th:block th:replace="${links}"/>
@@ -64,11 +63,6 @@
                         <a class="nav-link" th:href="@{/administration-page}">Dashboard</a>
                     </li>
                 </ul>
-                <li class="nav-item" >
-                    <a class="nav-link" href="#">
-                        <img th:src="@{/images/icons/icons8_Shopping_Cart_96px.png}" style="height: 40px; width: 40px">
-                    </a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHelp" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,6 +77,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item" >
+                    <a id="card-img" style="margin-right: 10px" th:href="@{/cart}">
+                        <img th:src="@{/images/icons/icons8_Shopping_Cart_96px.png}" style="height: 40px; width: 40px">
+                        <span id="amount"></span>
+                    </a>
                 </li>
                 <li class="nav-item">
                    <!-- Стандарт синтаксиса Выражений/Standard Expression Syntax и
