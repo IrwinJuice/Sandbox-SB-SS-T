@@ -3,11 +3,590 @@
 <head th:replace="fragments/base :: common_head(~{::title},~{::link})">
     <meta charset="UTF-8">
     <title>VINYL UNION</title>
-    <link rel="stylesheet" th:href="@{/#}">
+    <link rel="stylesheet" th:href="@{/css/cart.css}">
 </head>
 <body>
+
 <div th:replace="fragments/base :: header_common"></div>
 
+    <div class="central" >
+        <div class="cart-items">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Ваша корзина</span>
+                </h4>
+                <ul id="ul" class="list-group mb-3" th:object="${vinyls}" th:method="GET">
+
+                  <!--  <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <img class="card-img"
+                             src="/images/vinil/imgs_bd_vinil/vin1.png" alt="Card image cap">
+                        <div class="description">
+                            <h6 class="my-0">Product name</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">$12</span>
+                    </li>-->
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="user-data">
+                    <h4 class="text-muted">Оформить покупку</h4>
+                    <form class="needs-validation" novalidate="">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Имя</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Фамилия</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                            <div class="invalid-feedback">
+                                Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                            <div class="invalid-feedback">
+                                Please enter your shipping address.
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="country">Region</label>
+                                <select class="custom-select d-block w-100" id="country" required="">
+                                    <option value="">Choose...</option>
+                                    <option>Автономная Республика Крым</option>
+                                    <option>Винницкая область</option>
+                                    <option>Волынская область</option>
+                                    <option>Днепропетровская область</option>
+                                    <option>Донецкая область</option>
+                                    <option>Житомирская область</option>
+                                    <option>Закарпатская область</option>
+                                    <option>Запорожская область</option>
+                                    <option>Ивано-Франковская область</option>
+                                    <option>Киевская область</option>
+                                    <option>Кировоградская область</option>
+                                    <option>Луганская область</option>
+                                    <option>Львовская область</option>
+                                    <option>Николаевская область</option>
+                                    <option>Одесская область</option>
+                                    <option>Полтавская область</option>
+                                    <option>Ровенская область</option>
+                                    <option>Сумская область</option>
+                                    <option>Тернопольская область</option>
+                                    <option>Харьковская область</option>
+                                    <option>Херсонская область</option>
+                                    <option>Хмельницкая область</option>
+                                    <option>Черкасская область</option>
+                                    <option>Черниговская область</option>
+                                    <option>Черновицкая область</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid Region.
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="state">City</label>
+                                <select class="custom-select d-block w-100" id="state" required="">
+                                    <option value="">Choose...</option>
+                                    <option>Авдіївка</option>
+                                    <option>Алмазна</option>
+                                    <option>Алупка</option>
+                                    <option>Алушта</option>
+                                    <option>Алчевськ</option>
+                                    <option>Амвросіївка</option>
+                                    <option>Ананьїв</option>
+                                    <option>Андрушівка</option>
+                                    <option>Антрацит</option>
+                                    <option>Апостолове</option>
+                                    <option>Армянськ</option>
+                                    <option>Арциз</option>
+                                    <option>Балаклія</option>
+                                    <option>Балта</option>
+                                    <option>Бар</option>
+                                    <option>Баранівка</option>
+                                    <option>Барвінкове</option>
+                                    <option>Батурин</option>
+                                    <option>Бахмач</option>
+                                    <option>Бахмут</option>
+                                    <option>Бахчисарай</option>
+                                    <option>Баштанка</option>
+                                    <option>Белз</option>
+                                    <option>Бердичів</option>
+                                    <option>Бердянськ</option>
+                                    <option>Берегове</option>
+                                    <option>Бережани</option>
+                                    <option>Березань</option>
+                                    <option>Березівка</option>
+                                    <option>Березне</option>
+                                    <option>Берестечко</option>
+                                    <option>Берислав</option>
+                                    <option>Бершадь</option>
+                                    <option>Бібрка</option>
+                                    <option>Біла Церква</option>
+                                    <option>Білгород-Дністровський</option>
+                                    <option>Білицьке</option>
+                                    <option>Білогірськ</option>
+                                    <option>Білозерське</option>
+                                    <option>Білопілля</option>
+                                    <option>Біляївка</option>
+                                    <option>Благовіщенське</option>
+                                    <option>Бобринець</option>
+                                    <option>Бобровиця</option>
+                                    <option>Богодухів</option>
+                                    <option>Богуслав</option>
+                                    <option>Боково-Хрустальне </option>
+                                    <option>Болград</option>
+                                    <option>Болехів</option>
+                                    <option>Борзна</option>
+                                    <option>Борислав</option>
+                                    <option>Бориспіль</option>
+                                    <option>Борщів</option>
+                                    <option>Боярка</option>
+                                    <option>Бровари</option>
+                                    <option>Броди</option>
+                                    <option>Брянка</option>
+                                    <option>Бунге</option>
+                                    <option>Буринь</option>
+                                    <option>Бурштин</option>
+                                    <option>Буськ</option>
+                                    <option>Буча </option>
+                                    <option>Бучач</option>
+                                    <option>Валки</option>
+                                    <option>Вараш</option>
+                                    <option>Василівка</option>
+                                    <option>Васильків</option>
+                                    <option>Ватутіне</option>
+                                    <option>Вашківці</option>
+                                    <option>Великі Мости</option>
+                                    <option>Верхівцеве</option>
+                                    <option>Верхньодніпровськ</option>
+                                    <option>Вижниця</option>
+                                    <option>Вилкове</option>
+                                    <option>Винники</option>
+                                    <option>Виноградів</option>
+                                    <option>Вишгород</option>
+                                    <option>Вишневе</option>
+                                    <option>Вільногірськ</option>
+                                    <option>Вільнянськ</option>
+                                    <option>Вінниця</option>
+                                    <option>Вовчанськ</option>
+                                    <option>Вознесенівка</option>
+                                    <option>Вознесенськ</option>
+                                    <option>Волноваха</option>
+                                    <option>Володимир-Волинський</option>
+                                    <option>Волочиськ</option>
+                                    <option>Ворожба</option>
+                                    <option>Вуглегірськ</option>
+                                    <option>Вугледар</option>
+                                    <option>Гадяч</option>
+                                    <option>Гайворон</option>
+                                    <option>Гайсин</option>
+                                    <option>Галич</option>
+                                    <option>Генічеськ</option>
+                                    <option>Герца</option>
+                                    <option>Гірник</option>
+                                    <option>Гірське</option>
+                                    <option>Глиняни</option>
+                                    <option>Глобине</option>
+                                    <option>Глухів</option>
+                                    <option>Гнівань</option>
+                                    <option>Гола Пристань</option>
+                                    <option>Голубівка</option>
+                                    <option>Горішні Плавні</option>
+                                    <option>Горлівка</option>
+                                    <option>Городенка</option>
+                                    <option>Городище</option>
+                                    <option>Городня</option>
+                                    <option>Городок</option>
+                                    <option>Городок</option>
+                                    <option>Горохів</option>
+                                    <option>Гребінка</option>
+                                    <option>Гуляйполе</option>
+                                    <option>Дебальцеве</option>
+                                    <option>Деражня</option>
+                                    <option>Дергачі</option>
+                                    <option>Джанкой</option>
+                                    <option>Дніпро</option>
+                                    <option>Дніпрорудне</option>
+                                    <option>Добромиль</option>
+                                    <option>Добропілля</option>
+                                    <option>Довжанськ</option>
+                                    <option>Докучаєвськ</option>
+                                    <option>Долина</option>
+                                    <option>Долинська</option>
+                                    <option>Донецьк</option>
+                                    <option>Дрогобич</option>
+                                    <option>Дружба</option>
+                                    <option>Дружківка</option>
+                                    <option>Дубляни</option>
+                                    <option>Дубно</option>
+                                    <option>Дубровиця</option>
+                                    <option>Дунаївці</option>
+                                    <option>Енергодар</option>
+                                    <option>Євпаторія</option>
+                                    <option>Єнакієве</option>
+                                    <option>Жашків</option>
+                                    <option>Жданівка</option>
+                                    <option>Жидачів</option>
+                                    <option>Житомир</option>
+                                    <option>Жмеринка</option>
+                                    <option>Жовква</option>
+                                    <option>Жовті Води</option>
+                                    <option>Заводське</option>
+                                    <option>Залізне</option>
+                                    <option>Заліщики</option>
+                                    <option>Запоріжжя</option>
+                                    <option>Заставна</option>
+                                    <option>Збараж</option>
+                                    <option>Зборів</option>
+                                    <option>Звенигородка</option>
+                                    <option>Здолбунів</option>
+                                    <option>Зеленодольськ</option>
+                                    <option>Зимогір'я</option>
+                                    <option>Зіньків</option>
+                                    <option>Зміїв</option>
+                                    <option>Знам'янка</option>
+                                    <option>Золоте</option>
+                                    <option>Золотоноша</option>
+                                    <option>Золочів</option>
+                                    <option>Зоринськ</option>
+                                    <option>Зугрес</option>
+                                    <option>Івано-Франківськ</option>
+                                    <option>Ізмаїл</option>
+                                    <option>Ізюм</option>
+                                    <option>Ізяслав</option>
+                                    <option>Іллінці</option>
+                                    <option>Іловайськ</option>
+                                    <option>Інкерман</option>
+                                    <option>Ірміно </option>
+                                    <option>Ірпінь</option>
+                                    <option>Іршава</option>
+                                    <option>Ічня</option>
+                                    <option>Кагарлик</option>
+                                    <option>Кадіївка</option>
+                                    <option>Калинівка</option>
+                                    <option>Калуш</option>
+                                    <option>Кальміуське</option>
+                                    <option>Камінь-Каширський</option>
+                                    <option>Кам'янець-Подільський</option>
+                                    <option>Кам'янка</option>
+                                    <option>Кам'янка-Бузька</option>
+                                    <option>Кам'янка-Дніпровська</option>
+                                    <option>Кам'янське</option>
+                                    <option>Канів</option>
+                                    <option>Карлівка</option>
+                                    <option>Каховка</option>
+                                    <option>Керч</option>
+                                    <option>Київ</option>
+                                    <option>Кипуче</option>
+                                    <option>Ківерці</option>
+                                    <option>Кілія</option>
+                                    <option>Кропивницький</option>
+                                    <option>Кіцмань</option>
+                                    <option>Кобеляки</option>
+                                    <option>Ковель</option>
+                                    <option>Кодима</option>
+                                    <option>Козятин</option>
+                                    <option>Коломия</option>
+                                    <option>Комарно</option>
+                                    <option>Конотоп</option>
+                                    <option>Копичинці</option>
+                                    <option>Корець</option>
+                                    <option>Коростень</option>
+                                    <option>Коростишів</option>
+                                    <option>Корсунь-Шевченківський</option>
+                                    <option>Корюківка</option>
+                                    <option>Косів</option>
+                                    <option>Костопіль</option>
+                                    <option>Костянтинівка</option>
+                                    <option>Краматорськ</option>
+                                    <option>Красилів</option>
+                                    <option>Красногорівка</option>
+                                    <option>Красноград</option>
+                                    <option>Красноперекопськ</option>
+                                    <option>Кременець</option>
+                                    <option>Кременчук</option>
+                                    <option>Кремінна</option>
+                                    <option>Кривий Ріг</option>
+                                    <option>Кролевець</option>
+                                    <option>Куп'янськ</option>
+                                    <option>Курахове</option>
+                                    <option>Ладижин</option>
+                                    <option>Ланівці</option>
+                                    <option>Лебедин</option>
+                                    <option>Лиман</option>
+                                    <option>Липовець</option>
+                                    <option>Лисичанськ</option>
+                                    <option>Лозова</option>
+                                    <option>Лохвиця</option>
+                                    <option>Лубни</option>
+                                    <option>Луганськ</option>
+                                    <option>Лутугине</option>
+                                    <option>Луцьк</option>
+                                    <option>Львів</option>
+                                    <option>Любомль</option>
+                                    <option>Люботин</option>
+                                    <option>Макіївка</option>
+                                    <option>Мала Виска</option>
+                                    <option>Малин</option>
+                                    <option>Мар'їнка</option>
+                                    <option>Марганець</option>
+                                    <option>Маріуполь</option>
+                                    <option>Мелітополь</option>
+                                    <option>Мена</option>
+                                    <option>Мерефа</option>
+                                    <option>Миколаїв</option>
+                                    <option>Миколаїв</option>
+                                    <option>Миколаївка</option>
+                                    <option>Миргород</option>
+                                    <option>Мирноград</option>
+                                    <option>Миронівка</option>
+                                    <option>Міусинськ</option>
+                                    <option>Могилів-Подільський</option>
+                                    <option>Молодогвардійськ</option>
+                                    <option>Молочанськ</option>
+                                    <option>Монастириська</option>
+                                    <option>Монастирище</option>
+                                    <option>Моршин</option>
+                                    <option>Моспине</option>
+                                    <option>Мостиська</option>
+                                    <option>Мукачеве</option>
+                                    <option>Надвірна</option>
+                                    <option>Немирів</option>
+                                    <option>Нетішин</option>
+                                    <option>Ніжин</option>
+                                    <option>Нікополь</option>
+                                    <option>Нова Каховка</option>
+                                    <option>Нова Одеса</option>
+                                    <option>Новгород-Сіверський</option>
+                                    <option>Новий Буг</option>
+                                    <option>Новий Калинів</option>
+                                    <option>Новий Розділ</option>
+                                    <option>Новоазовськ</option>
+                                    <option>Нововолинськ</option>
+                                    <option>Новоград-Волинський</option>
+                                    <option>Новогродівка</option>
+                                    <option>Новодністровськ</option>
+                                    <option>Новодружеськ</option>
+                                    <option>Новомиргород</option>
+                                    <option>Новомосковськ</option>
+                                    <option>Новоселиця</option>
+                                    <option>Новоукраїнка</option>
+                                    <option>Новояворівськ</option>
+                                    <option>Носівка</option>
+                                    <option>Обухів</option>
+                                    <option>Овруч</option>
+                                    <option>Одеса</option>
+                                    <option>Олевськ</option>
+                                    <option>Олександрівськ</option>
+                                    <option>Олександрія</option>
+                                    <option>Олешки</option>
+                                    <option>Оріхів</option>
+                                    <option>Остер</option>
+                                    <option>Острог</option>
+                                    <option>Охтирка</option>
+                                    <option>Очаків</option>
+                                    <option>Павлоград</option>
+                                    <option>Первомайськ</option>
+                                    <option>Первомайськ</option>
+                                    <option>Первомайський</option>
+                                    <option>Перевальськ</option>
+                                    <option>Перемишляни</option>
+                                    <option>Перечин</option>
+                                    <option>Перещепине</option>
+                                    <option>Переяслав-Хмельницький</option>
+                                    <option>Першотравенськ</option>
+                                    <option>Петрово-Красносілля</option>
+                                    <option>Пирятин</option>
+                                    <option>Південне</option>
+                                    <option>Підгайці</option>
+                                    <option>Підгородне</option>
+                                    <option>Погребище</option>
+                                    <option>Подільськ</option>
+                                    <option>Покров</option>
+                                    <option>Покровськ</option>
+                                    <option>Пологи</option>
+                                    <option>Полонне</option>
+                                    <option>Полтава</option>
+                                    <option>Помічна</option>
+                                    <option>Попасна</option>
+                                    <option>Почаїв</option>
+                                    <option>Привілля</option>
+                                    <option>Прилуки</option>
+                                    <option>Приморськ</option>
+                                    <option>Прип'ять</option>
+                                    <option>Пустомити</option>
+                                    <option>Путивль</option>
+                                    <option>П'ятихатки</option>
+                                    <option>Рава-Руська</option>
+                                    <option>Радехів</option>
+                                    <option>Радивилів</option>
+                                    <option>Радомишль</option>
+                                    <option>Рахів</option>
+                                    <option>Рені</option>
+                                    <option>Ржищів</option>
+                                    <option>Рівне</option>
+                                    <option>Ровеньки</option>
+                                    <option>Рогатин</option>
+                                    <option>Родинське</option>
+                                    <option>Рожище</option>
+                                    <option>Роздільна</option>
+                                    <option>Ромни</option>
+                                    <option>Рубіжне</option>
+                                    <option>Рудки</option>
+                                    <option>Саки</option>
+                                    <option>Самбір</option>
+                                    <option>Сарни</option>
+                                    <option>Свалява</option>
+                                    <option>Сватове</option>
+                                    <option>Світловодськ</option>
+                                    <option>Світлодарськ</option>
+                                    <option>Святогірськ</option>
+                                    <option>Севастополь</option>
+                                    <option>Селидове</option>
+                                    <option>Семенівка</option>
+                                    <option>Середина-Буда</option>
+                                    <option>Сєвєродонецьк</option>
+                                    <option>Синельникове</option>
+                                    <option>Сіверськ</option>
+                                    <option>Сімферополь</option>
+                                    <option>Скадовськ</option>
+                                    <option>Скалат</option>
+                                    <option>Сквира</option>
+                                    <option>Сколе</option>
+                                    <option>Славута</option>
+                                    <option>Славутич</option>
+                                    <option>Слов'янськ</option>
+                                    <option>Сміла</option>
+                                    <option>Снігурівка</option>
+                                    <option>Сніжне</option>
+                                    <option>Сновськ</option>
+                                    <option>Снятин</option>
+                                    <option>Сокаль</option>
+                                    <option>Сокиряни</option>
+                                    <option>Соледар</option>
+                                    <option>Сорокине</option>
+                                    <option>Соснівка</option>
+                                    <option>Старий Крим</option>
+                                    <option>Старий Самбір</option>
+                                    <option>Старобільськ</option>
+                                    <option>Старокостянтинів</option>
+                                    <option>Стебник</option>
+                                    <option>Сторожинець</option>
+                                    <option>Стрий</option>
+                                    <option>Судак</option>
+                                    <option>Судова Вишня</option>
+                                    <option>Суми</option>
+                                    <option>Суходільськ</option>
+                                    <option>Таврійськ</option>
+                                    <option>Тальне</option>
+                                    <option>Тараща</option>
+                                    <option>Татарбунари</option>
+                                    <option>Теплодар</option>
+                                    <option>Теребовля</option>
+                                    <option>Тернівка</option>
+                                    <option>Тернопіль</option>
+                                    <option>Тетіїв</option>
+                                    <option>Тисмениця</option>
+                                    <option>Тлумач</option>
+                                    <option>Токмак</option>
+                                    <option>Торецьк</option>
+                                    <option>Тростянець</option>
+                                    <option>Трускавець</option>
+                                    <option>Тульчин</option>
+                                    <option>Турка</option>
+                                    <option>Тячів</option>
+                                    <option>Угнів</option>
+                                    <option>Ужгород</option>
+                                    <option>Узин</option>
+                                    <option>Українка</option>
+                                    <option>Українськ</option>
+                                    <option>Умань</option>
+                                    <option>Устилуг</option>
+                                    <option>Фастів</option>
+                                    <option>Феодосія</option>
+                                    <option>Харків</option>
+                                    <option>Харцизьк</option>
+                                    <option>Херсон</option>
+                                    <option>Хирів</option>
+                                    <option>Хмельницький</option>
+                                    <option>Хмільник</option>
+                                    <option>Ходорів</option>
+                                    <option>Хорол</option>
+                                    <option>Хоростків</option>
+                                    <option>Хотин</option>
+                                    <option>Хрестівка</option>
+                                    <option>Христинівка</option>
+                                    <option>Хрустальний</option>
+                                    <option>Хуст</option>
+                                    <option>Часів Яр</option>
+                                    <option>Червоноград</option>
+                                    <option>Черкаси</option>
+                                    <option>Чернівці</option>
+                                    <option>Чернігів</option>
+                                    <option>Чигирин</option>
+                                    <option>Чистякове</option>
+                                    <option>Чоп</option>
+                                    <option>Чорнобиль</option>
+                                    <option>Чорноморськ</option>
+                                    <option>Чортків</option>
+                                    <option>Чугуїв</option>
+                                    <option>Чуднів</option>
+                                    <option>Шаргород</option>
+                                    <option>Шахтарськ</option>
+                                    <option>Шепетівка</option>
+                                    <option>Шостка</option>
+                                    <option>Шпола</option>
+                                    <option>Шумськ</option>
+                                    <option>Щастя</option>
+                                    <option>Щолкіне</option>
+                                    <option>Южне</option>
+                                    <option>Южноукраїнськ</option>
+                                    <option>Яворів</option>
+                                    <option>Яготин</option>
+                                    <option>Ялта</option>
+                                    <option>Ямпіль</option>
+                                    <option>Яремче</option>
+                                    <option>Ясинувата</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please provide a valid City.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="zip">Zip</label>
+                                <input type="text" class="form-control" id="zip" placeholder="" required="">
+                                <div class="invalid-feedback">
+                                    Zip code required.
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                    </form>
+        </div>
+    </div>
+
 <script th:src="@{/js/cart.js}"></script>
+<script type="text/javascript">
+    purchaseSheet();
+</script>
 </body>
 </html>

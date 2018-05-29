@@ -1,0 +1,42 @@
+.central{
+    position: relative;
+    top: 150px;
+    min-height: 500px;
+    min-width: 1000px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+.cart-items{
+    display: block;
+    float:left;
+    width: 65%;
+    border-radius: 1%;
+    margin: -5px;
+    padding: 3%;
+    background-color: #fafafa;
+    min-height: 550px;
+}
+.user-data{
+    display: block;
+    float:right;
+    width: 35%;
+    background-color: #fafafa;
+    min-height: 550px;
+    border-radius: 1%;
+    padding: 3%;
+    margin: -5px;
+
+}
+.list-group{
+    min-width: 550px;
+}
+.card-img{
+    max-width: 30%;
+    height: 90%;
+    float: right;
+    display: block;
+}
+.description{
+    position: absolute;
+    left: 200px;
+}

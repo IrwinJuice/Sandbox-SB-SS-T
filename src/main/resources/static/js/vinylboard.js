@@ -6,14 +6,22 @@ jQuery(function ($) {
     });
 });
 
-jQuery(document).ready(function () {
-    document.getElementById("amount").textContent = localStorage.length;
-});
+jQuery(document).ready(findInLocalStorage());
 
 function addCartToLocalStorage(id) {
     var getId = id;
     var cardKey = "ID" +  id;
     localStorage.setItem(cardKey, getId);
-    document.getElementById("amount").textContent = localStorage.length;
+    findInLocalStorage();
     console.log(cardKey);
+}
+function findInLocalStorage() {
+    let count = 0;
+    for (var i = 0; i<localStorage.length; i++){
+        key = localStorage.key(i);
+        if(~key.indexOf('ID')){
+            count++;
+        }
+    }
+    document.getElementById("amount").textContent = ""+count;
 }

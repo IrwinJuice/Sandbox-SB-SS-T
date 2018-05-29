@@ -24,8 +24,8 @@ public class VinylController {
 
     private final String UPLOAD_FOLDER = "D:\\Documents\\Projects\\ShopOnSB\\src\\main\\resources\\static\\images\\vinil\\imgs_bd_vinil\\";
     private final String DB_PATH       = "images/vinil/imgs_bd_vinil/";
-    private final String ADMIN_PAGE = "/administration-page";
-    private final String VINYL_PAGE = "/vinylShop";
+    private final String ADMIN_PAGE    = "/administration-page";
+    private final String VINYL_PAGE    = "/vinylShop";
 
 
     private VinylService    vinylService;
@@ -70,13 +70,15 @@ public class VinylController {
     }
 
     @GetMapping({"/", VINYL_PAGE})
-    public ModelAndView mainPage(ModelAndView modelAndView){
+    public ModelAndView mainPage(ModelAndView modelAndView) {
 
-         List<Carousel> getSliders = carouselService.getAllSlides();
-        List<Vinyl> getVinyls = vinylService.getAllVinyl();
+        List<Carousel> getSliders = carouselService.getAllSlides();
+        List<Vinyl>    getVinyls  = vinylService.getAllVinyl();
 
-        modelAndView.addObject("carousel", getSliders);
-        modelAndView.addObject("vinyls", getVinyls);
+        modelAndView.addObject("carousel",
+                               getSliders);
+        modelAndView.addObject("vinyls",
+                               getVinyls);
         modelAndView.setViewName("vinylApp/vinylApp");
         return modelAndView;
     }

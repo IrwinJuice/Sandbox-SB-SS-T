@@ -161,7 +161,11 @@ figure h1 {
 #card-img {
     position: relative;
 }
-
+#cost{
+    float: right;
+    display: block;
+    margin-top: 5px;
+}
 #amount {
     position: absolute;
     width: 20px;
