@@ -5,6 +5,9 @@
     <!--параметризированый фрагмент-->
     <title th:replace="${title}">VINYL UNION</title>
     <!-- Common styles and scripts -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          th:href="@{/css/resources/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
             th:src="@{/js/resources/jquery-3.3.1.min.js}"></script>
@@ -13,9 +16,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          th:href="@{/css/resources/bootstrap.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+
     <link rel="shortcut icon" th:href="@{/images/icon.png}">
     <!--/* Per-page placeholder for additional links */-->
     <th:block th:replace="${links}"/>

@@ -14,10 +14,11 @@ import java.util.List;
 
 @Controller
 public class CartController {
-    private final String URL_CART_PAGE = "/cart";
+    private final        String URL_CART_PAGE  = "/cart";
     private static final String URL_GET_VINYLS = "/get_vinyls";
 
-    private VinylService    vinylService;
+    private VinylService vinylService;
+
     @Autowired
     public CartController(VinylService vinylService) {
         this.vinylService = vinylService;
@@ -25,18 +26,21 @@ public class CartController {
 
 
     @RequestMapping(value = URL_CART_PAGE, method = RequestMethod.GET)
-    public ModelAndView showCartPage(ModelAndView modelAndView){
+    public ModelAndView showCartPage(ModelAndView modelAndView) {
         List<Vinyl> getVinyls = vinylService.getAllVinyl();
 
-        modelAndView.addObject("vinyls", getVinyls);
+        modelAndView.addObject("vinyls",
+                               getVinyls);
         modelAndView.setViewName("vinylApp/cart");
         return modelAndView;
     }
+
     @RequestMapping(value = URL_GET_VINYLS, method = RequestMethod.GET)
-    public @ResponseBody String getVinyl() {
+    public @ResponseBody
+    String getVinyl() {
         List<Vinyl> vinyls = vinylService.getAllVinyl();
         System.out.println(vinyls);
-        JSONArray   array  = new JSONArray(vinyls);
+        JSONArray array = new JSONArray(vinyls);
         return array.toString();
     }
 
