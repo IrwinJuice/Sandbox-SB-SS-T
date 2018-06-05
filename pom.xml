@@ -27,7 +27,6 @@
     <dependencies>
         <!--Spring Boot dependencies-->
 
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -50,6 +49,25 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
+        <!--Hibernate-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.17.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>5.2.17.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.2.17.Final</version>
         </dependency>
 
         <!--Thymeleaf-->
@@ -83,6 +101,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
+
         <!--Websocket-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -139,6 +158,7 @@
             <version>1.16.20</version>
             <scope>provided</scope>
         </dependency>
+
         <!-- Spring AOP -->
         <dependency>
             <groupId>org.springframework</groupId>

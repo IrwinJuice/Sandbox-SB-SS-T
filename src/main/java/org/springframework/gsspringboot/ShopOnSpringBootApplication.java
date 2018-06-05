@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScans;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-
+@ComponentScan("org.springframework.gsspringboot")
 public class ShopOnSpringBootApplication {
 
     public static void main(String[] args) {

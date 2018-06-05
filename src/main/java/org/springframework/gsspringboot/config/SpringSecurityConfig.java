@@ -35,9 +35,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     //inMemoryAuthentication - создает аутентификацию в памяти
 
     auth.inMemoryAuthentication()
-        .withUser("user123").password("{noop}qwe").roles("USER")
+        .withUser("user123").password("{noop}qwe").roles("ROLE_USER")
         .and()
-        .withUser("templates/admin").password("{noop}password").roles("ADMIN");
+        .withUser("templates/admin").password("{noop}password").roles("ROLE_ADMIN");
      */
     // Нам нужен префикс {noop} так как:
     // В spring-security-core:5.0.0.RC1 по умолчанию
