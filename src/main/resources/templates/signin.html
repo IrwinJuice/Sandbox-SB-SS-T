@@ -1,50 +1,111 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="fragments/base :: common_head(~{::title},~{::link})">
     <title>VINYL UNION</title>
     <link rel="stylesheet" th:href="@{/css/signin.css}">
 </head>
 
-<body class="text-center">
-<div class="container" style="max-width: 400px; height: 500px">
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" href="#sing-in" role="tab" data-toggle="tab">Sing-in</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#sing-up" role="tab" data-toggle="tab">Sing-up</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade in active" id="sing-in">
-
-                <form class="form-signin" name="signin" th:action="@{/signin}" method="post">
-                    <fieldset>
-                        <div th:if="${param.error}" class="alert alert-error"> <!--вернет параметр запроса с именем X -->
-                            Invalid username and password.
-                        </div>
-                        <div th:if="${param.logout}" class="alert alert-success">
-                            You have been logged out.
-                        </div>
-
-                        <label for="username" class="sr-only">Username</label>
-                        <input type="text" id="username" class="form-control" name="username" required autofocus/>
-                        <label for="password" class="sr-only">Password</label>
-                        <input type="password" id="password" name="password" class="form-control" required/>
-
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                    </fieldset>
-                </form>
-
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="sing-up">
-            Singup
-        </div>
+<body>
+<div th:replace="fragments/base :: header_common"></div>
+<div class="alerts">
+    <div id="login-alert" class="alert alert-danger" role="alert">
+        Такой Login уже существует или вы ввели не допустимые символы.<br>
+        Login может содержать буквы Латинского алфавита, цифры, дефисы и подчёркивания, от 3 до 16 символов.
     </div>
-
+    <div id="email-alert" class="alert alert-danger" role="alert">
+        Пользователь с таким E-mail уже зарегистрирован.
+    </div>
+    <div id="password-alert" class="alert alert-danger" role="alert">
+        Пароль должен содержать буквы Латинского алфавита строчные и заглавные, а так же цифры или спецсимволы. <br>
+        Длинна пароля не мение 6 знаков.
+    </div>
+    <div id="password-chech-alert" class="alert alert-danger" role="alert">
+        Пароли не совпадают.
+    </div>
 </div>
+<div class="container">
+    <section class="user">
+        <div class="user_options-container">
+            <div class="user_options-text">
+                <div class="user_options-unregistered">
+                    <h2 class="user_unregistered-title">Don't have an account?</h2>
+                    <p class="user_unregistered-text">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
+                    <button class="user_unregistered-signup" id="signup-button">Sign up</button>
+                </div>
 
+                <div class="user_options-registered">
+                    <h2 class="user_registered-title">Have an account?</h2>
+                    <p class="user_registered-text">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
+                    <button class="user_registered-login" id="login-button">Login</button>
+                </div>
+            </div>
+
+            <div class="user_options-forms" id="user_options-forms">
+                <form class="form-signin" name="signin" th:action="@{/signin}" method="post">
+                    <div th:if="${param.error}" class="alert alert-error">
+                        Invalid username and password.
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success">
+                        You have been logged out.
+                    </div>
+                    <div class="user_forms-login">
+                        <form class="forms_form">
+                            <fieldset class="forms_fieldset">
+                                <div class="forms_field">
+                                    <input type="text" class="forms_field-input" id="username" placeholder="Login" name="username" required autofocus/>
+                                </div>
+                                <div class="forms_field">
+                                    <input type="password" id="password" name="password" placeholder="Password"
+                                           class="forms_field-input" required />
+                                </div>
+                            </fieldset>
+                            <div class="forms_buttons">
+                                <button type="button" class="forms_buttons-forgot">Forgot password?</button>
+                                <input type="submit" value="Sing In" class="forms_buttons-action">
+                            </div>
+                            <div class="title title--center">OR sign-in with:</div>
+                            <div class="buttons">
+                                <a class="btn btn-block btn-social btn-twitter">
+                                    <span class="fa fa-twitter"></span>Twitter
+                                </a>
+                                <a class="btn btn-block btn-social btn-facebook">
+                                    <span class="fa fa-facebook"></span>Facebook
+                                </a>
+                                <a class="btn btn-block btn-social btn-google">
+                                    <span class="fa fa-google"></span>Google
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </form >
+                <div class="user_forms-signup">
+                    <form class="forms_form" name="signup" action="/signup" method="post">
+                        <fieldset class="forms_fieldset">
+                            <div class="forms_field">
+                                <input id="login" type="text" class="forms_field-input" placeholder="Login" name="login"
+                                      required autofocus onblur="checkLogin()" />
+                            </div>
+                            <div class="forms_field">
+                                <input id="email" type="email" placeholder="Email" name="email" class="forms_field-input" required onblur="checkEmail()"/>
+                            </div>
+                            <div class="forms_field">
+                                <input id="password-check" type="password" name="password" placeholder="Password" class="forms_field-input" required onblur="checkPassword()"/>
+                            </div>
+                            <div class="forms_field">
+                                <input id="password-check-true" type="password" placeholder="Password" class="forms_field-input" required onblur="checkPasswordTrue()"/>
+                            </div>
+                        </fieldset>
+                        <div class="forms_buttons">
+                            <input type="submit" value="Sign up" class="forms_buttons-action">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            </div>
+    </section>
+</div>
+<script th:src="@{/js/signin.js}"></script>
 </body>
 </html>
 

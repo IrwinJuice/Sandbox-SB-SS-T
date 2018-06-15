@@ -8,18 +8,20 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           th:href="@{/css/resources/bootstrap.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/resources/bootstrap-social.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/resources/font-awesome.css}">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
             th:src="@{/js/resources/jquery-3.3.1.min.js}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             th:src="@{/js/resources/bootstrap.min.js}"></script>
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="shortcut icon" th:href="@{/images/icon.png}">
     <!--/* Per-page placeholder for additional links */-->
     <th:block th:replace="${links}"/>
+    <link rel="stylesheet" href="../../static/css/resources/font-awesome.css">
     <!--Из-за неизвестного количества линков -->
     <!--th:block -  единственный элементный процессор (а не атрибут), включенный в стандартные диалекты-->
     <!--th: block - это простой контейнер атрибутов, который позволяет разработчикам
@@ -29,10 +31,15 @@
 <body>
 
 <div th:fragment="header_common">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark  bg-dark ">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark ">
         <div class="brand">
-            <a class="navbar-brand" style="font-family: Roboto, serif" th:href="@{/}">
-                <img th:src="@{/images/icons/logo.png}" style="height: 40px; width: 40px"/>VINYL UNION</a>
+            <a class="navbar-brand" th:href="@{/}">
+                <div class="labl-wrap">
+                    <div class="labl">
+                        <h1>VINYL</h1>
+                    </div>
+                </div>
+            </a>
         </div>
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -66,8 +73,7 @@
                 </ul>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownHelp" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Help
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" th:href="@{#}">Support</a>
@@ -95,7 +101,7 @@
                                     <!-- authentication обект авторизированого пользователя -->
                         <!--${#authorization.expression('isAuthenticated()')} - возвращает true если юзер авторизирован-->
                         <span th:case="${false}"><a id="btn-login" class="btn my-2 my-sm-0" th:href="@{/signin}">
-                            <i class="fa fa-user"></i>SIGN-IN</a></span>
+                            <i class="fa fa-user"></i> SIGN-IN</a></span>
                         <span th:case="${true}">
                             <div class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdownHelpAccount" role="button"

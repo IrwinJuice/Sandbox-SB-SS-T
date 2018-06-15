@@ -24,16 +24,16 @@ public class User {
     @Column(nullable = false, name="password")
     private String password;
 
-    @Column(nullable = false, name = "customer_address")
+    @Column(nullable = true, name = "customer_address")
     private String customerAddress;
 
-    @Column(nullable = false, name = "customer_name")
+    @Column(nullable = true, name = "customer_name")
     private String customerName;
 
-    @Column(nullable = false, name = "customer_last_name")
+    @Column(nullable = true, name = "customer_last_name")
     private String customerLastName;
 
-    @Column (nullable = false, name = "customer_phone")
+    @Column (nullable = true, name = "customer_phone")
     private String customerPhone;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -44,4 +44,16 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Cart>carts = new HashSet<>();
 
+    public User() {
+    }
+
+    public User(String email,
+                String name,
+                String password,
+                Set<Role> roles){
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.roles = roles;
+    }
 }
