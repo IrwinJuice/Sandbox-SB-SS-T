@@ -22,11 +22,10 @@ import javax.validation.Valid;
 @Controller
 public class VinylController {
 
-    private final String UPLOAD_FOLDER = "D:\\Documents\\Projects\\ShopOnSB\\src\\main\\resources\\static\\images\\vinil\\imgs_bd_vinil\\";
+    private final String UPLOAD_FOLDER = "src/main/resources/static/images/vinil/imgs_bd_vinil/";
     private final String DB_PATH       = "images/vinil/imgs_bd_vinil/";
     private final String ADMIN_PAGE    = "/administration-page";
     private final String VINYL_PAGE    = "/vinylShop";
-
 
     private VinylService    vinylService;
     private CarouselService carouselService;
@@ -57,8 +56,7 @@ public class VinylController {
         try {
             bytes = file.getBytes();
             Path path = Paths.get(UPLOAD_FOLDER + file.getOriginalFilename());
-            Files.write(path,
-                        bytes);
+            Files.write(path.toAbsolutePath(), bytes);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -68,7 +66,6 @@ public class VinylController {
         modelAndView.setViewName("admin/administration-page");
         return modelAndView;
     }
-
     @GetMapping({"/", VINYL_PAGE})
     public ModelAndView mainPage(ModelAndView modelAndView) {
 
