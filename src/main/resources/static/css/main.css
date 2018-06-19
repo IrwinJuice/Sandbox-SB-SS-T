@@ -49,7 +49,7 @@ figure h1 {
 h1 {
     font-family: avenir, sans-serif;
     font-size: 40px;
-    line-height: 0px;
+    line-height: 0;
     font-weight: 800;
     color: transparent;
     -webkit-text-stroke-width: 6px;
