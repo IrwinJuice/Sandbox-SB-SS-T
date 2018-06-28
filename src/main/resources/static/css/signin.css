@@ -408,15 +408,28 @@ input::placeholder {
     position: absolute;
     bottom: 0;
 }
+#null-alert{
+    font-size: 14px;
+    color: red;
+    text-align: center;
+}
 #login-alert{
-    visibility: hidden;
+    font-size: 14px;
+    color: red;
+    text-align: center;
 }
 #email-alert{
-    visibility: hidden;
+    font-size: 14px;
+    color: red;
+    text-align: center;
 }
 #password-alert{
-    visibility: hidden;
+    font-size: 14px;
+    color: red;
+    text-align: center;
 }
-#password-chech-alert{
-    visibility: hidden;
+#password-check-alert{
+    font-size: 14px;
+    color: red;
+    text-align: center;
 }

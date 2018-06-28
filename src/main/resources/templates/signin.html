@@ -7,22 +7,7 @@
 
 <body>
 <div th:replace="fragments/base :: header_common"></div>
-<div class="alerts">
-    <div id="login-alert" class="alert alert-danger" role="alert">
-        Такой Login уже существует или вы ввели не допустимые символы.<br>
-        Login может содержать буквы Латинского алфавита, цифры, дефисы и подчёркивания, от 3 до 16 символов.
-    </div>
-    <div id="email-alert" class="alert alert-danger" role="alert">
-        Пользователь с таким E-mail уже зарегистрирован.
-    </div>
-    <div id="password-alert" class="alert alert-danger" role="alert">
-        Пароль должен содержать буквы Латинского алфавита строчные и заглавные, а так же цифры или спецсимволы. <br>
-        Длинна пароля не мение 6 знаков.
-    </div>
-    <div id="password-chech-alert" class="alert alert-danger" role="alert">
-        Пароли не совпадают.
-    </div>
-</div>
+
 <div class="container">
     <section class="user">
         <div class="user_options-container">
@@ -37,6 +22,7 @@
                     <h2 class="user_registered-title">Have an account?</h2>
                     <p class="user_registered-text">Banjo tote bag bicycle rights, High Life sartorial cray craft beer whatever street art fap.</p>
                     <button class="user_registered-login" id="login-button">Login</button>
+
                 </div>
             </div>
 
@@ -79,24 +65,30 @@
                     </div>
                 </form >
                 <div class="user_forms-signup">
-                    <form class="forms_form" name="signup" action="/signup" method="post">
+                    <form id="sing-up-form" class="forms_form" name="signup" >
+
                         <fieldset class="forms_fieldset">
                             <div class="forms_field">
                                 <input id="login" type="text" class="forms_field-input" placeholder="Login" name="login"
-                                      required autofocus onblur="checkLogin()" />
+                                      required autofocus pattern="^[a-zA-Z][a-zA-Z0-9-_]{3,16}$"
+                                      title="The Login may contain letters, numbers, dashes and underscores, from 3 to 16 symbols."/>
                             </div>
                             <div class="forms_field">
-                                <input id="email" type="email" placeholder="Email" name="email" class="forms_field-input" required onblur="checkEmail()"/>
+                                <input id="email" type="email" placeholder="Email" name="email" class="forms_field-input" required />
                             </div>
                             <div class="forms_field">
-                                <input id="password-check" type="password" name="password" placeholder="Password" class="forms_field-input" required onblur="checkPassword()"/>
+                                <input id="password-check" type="password" name="password" placeholder="Password" class="forms_field-input" required
+                                       pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                                       title="The password must contain lowercase and uppercase letters, numbers or special characters.
+                                                The length - 6 characters and more."/>
                             </div>
                             <div class="forms_field">
-                                <input id="password-check-true" type="password" placeholder="Password" class="forms_field-input" required onblur="checkPasswordTrue()"/>
+                                <input id="password-check-true" type="password" placeholder="Password" class="forms_field-input"
+                                       onblur="checkPasswordTrue()" required />
                             </div>
                         </fieldset>
                         <div class="forms_buttons">
-                            <input type="submit" value="Sign up" class="forms_buttons-action">
+                            <input value="Sign up" type="button" onclick="verifyAndSave()" class="forms_buttons-action"/>
                         </div>
                     </form>
                 </div>
