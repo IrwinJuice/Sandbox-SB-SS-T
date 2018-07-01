@@ -54,7 +54,7 @@
                                 <a class="btn btn-block btn-social btn-twitter">
                                     <span class="fa fa-twitter"></span>Twitter
                                 </a>
-                                <a class="btn btn-block btn-social btn-facebook">
+                                <a class="btn btn-block btn-social btn-facebook" href="/login/facebook">
                                     <span class="fa fa-facebook"></span>Facebook
                                 </a>
                                 <a class="btn btn-block btn-social btn-google">
@@ -98,6 +98,21 @@
     </section>
 </div>
 <script th:src="@{/js/signin.js}"></script>
+<script>
+    $.ajaxSetup({
+        beforeSend : function(xhr, settings) {
+            if (settings.type == 'POST' || settings.type == 'PUT'
+                || settings.type == 'DELETE') {
+                if (!(/^http:.*/.test(settings.url) || /^https:.*/
+                    .test(settings.url))) {
+                    // Only send the token to relative URLs i.e. locally.
+                    xhr.setRequestHeader("X-XSRF-TOKEN",
+                        Cookies.get('XSRF-TOKEN'));
+                }
+            }
+        }
+    });
+</script>
 </body>
 </html>
 

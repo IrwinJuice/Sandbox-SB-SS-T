@@ -2,6 +2,7 @@ package org.springframework.gsspringboot.controller;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.gsspringboot.model.Role;
 import org.springframework.gsspringboot.model.User;
 import org.springframework.gsspringboot.service.RoleService;
@@ -12,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 @Controller
+@Order(200)
 public class SignupController {
+
 
     private              UserService userService;
     private              RoleService roleService;
@@ -27,7 +29,6 @@ public class SignupController {
     private static final String PARAM_LOGIN    = "login";
     private static final String PARAM_EMAIL    = "email";
     private static final String PARAM_PASSWORD = "password";
-
 
     @Autowired
     public SignupController(UserService userService,
@@ -78,5 +79,7 @@ public class SignupController {
         }
         return jsonObject.toString();
     }
+
 }
+
 

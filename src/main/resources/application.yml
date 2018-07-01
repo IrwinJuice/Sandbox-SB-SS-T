@@ -1,0 +1,15 @@
+facebook:
+  client:
+    clientId: 234956140442589
+    clientSecret: 01afc60fc6489b3e00a42c52ea76f095
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me
+
+logging:
+  level:
+    org.springframework.security: DEBUG
