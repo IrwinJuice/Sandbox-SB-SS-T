@@ -27,6 +27,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.Filter;
 
@@ -102,7 +103,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                        .permitAll(true)//гарантия того что все пользователи имеют доступ к этой странице
                .and()
                    .logout()//обеспечивает выход из системы (есть расширяющие свойства)
-               //  .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                    .logoutSuccessUrl("/")
                    .permitAll()
                .and()
