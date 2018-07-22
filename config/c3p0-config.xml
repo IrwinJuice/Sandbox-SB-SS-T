@@ -1,6 +1,6 @@
 <c3p0-config>
     <default-config>
-  <!--      <property name="jdbcUrl">
+     <!--   <property name="jdbcUrl">
             jdbc:mysql://localhost:3306/vinyl_shop_db?useSSL=false</property>
         <property name="user">root</property>
         <property name="password">root</property>-->
