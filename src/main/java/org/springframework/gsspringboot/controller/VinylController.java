@@ -23,12 +23,13 @@ import javax.validation.Valid;
 public class VinylController {
 
     private final String UPLOAD_FOLDER = "src/main/resources/static/images/vinil/imgs_bd_vinil/";
-    private final String DB_PATH       = "images/vinil/imgs_bd_vinil/";
-    private final String ADMIN_PAGE    = "/administration-page";
-    private final String VINYL_PAGE    = "/vinylShop";
+    private final String DB_PATH = "images/vinil/imgs_bd_vinil/";
+    private final String ADMIN_PAGE = "/administration-page";
+    private final String VINYL_PAGE = "/vinylShop";
 
-    private VinylService    vinylService;
+    private VinylService vinylService;
     private CarouselService carouselService;
+
 
     @Autowired
     public VinylController(VinylService vinylService,
@@ -39,9 +40,8 @@ public class VinylController {
 
     @RequestMapping(value = ADMIN_PAGE, method = RequestMethod.GET)
     public ModelAndView showAdminPage(ModelAndView modelAndView,
-                                      Vinyl vinyl) {
-        modelAndView.addObject("vinyl",
-                               vinyl);
+                                      @Valid Vinyl vinyl) {
+        modelAndView.addObject("vinyl", vinyl);
         modelAndView.setViewName("admin/administration-page");
         return modelAndView;
     }
@@ -66,16 +66,17 @@ public class VinylController {
         modelAndView.setViewName("admin/administration-page");
         return modelAndView;
     }
+
     @GetMapping({"/", VINYL_PAGE})
     public ModelAndView mainPage(ModelAndView modelAndView) {
 
         List<Carousel> getSliders = carouselService.getAllSlides();
-        List<Vinyl>    getVinyls  = vinylService.getAllVinyl();
+        List<Vinyl> getVinyls = vinylService.getAllVinyl();
 
         modelAndView.addObject("carousel",
-                               getSliders);
+                getSliders);
         modelAndView.addObject("vinyls",
-                               getVinyls);
+                getVinyls);
         modelAndView.setViewName("vinylApp/vinylApp");
         return modelAndView;
     }

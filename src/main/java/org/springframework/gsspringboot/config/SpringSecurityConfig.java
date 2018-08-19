@@ -82,7 +82,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                     .and()
                 .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class)
                .authorizeRequests() //Позволяет ограничивать доступ на основе HttpServletRequest
-                        .antMatchers("/", "/vinylShop", "/about", "/login**").permitAll()
+                        .antMatchers("/", "/vinylShop", "/about", "/login**", "/search").permitAll()
                 //.antMatchers - Позволяет настроить HttpSecurity, для вызова при совпадении паттернов
                 //.permitAll() - доступно всем пользователям
                 //   com/t?st.jsp - matches com/test.jsp but also com/tast.jsp or com/txst.jsp
