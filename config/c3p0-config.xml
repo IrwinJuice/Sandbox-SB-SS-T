@@ -1,14 +1,14 @@
 <c3p0-config>
     <default-config>
-     <!--   <property name="jdbcUrl">
+        <property name="jdbcUrl">
             jdbc:mysql://localhost:3306/vinyl_shop_db?useSSL=false</property>
         <property name="user">root</property>
-        <property name="password">root</property>-->
+        <property name="password">root</property>
 
-        <property name="jdbcUrl">
+    <!--    <property name="jdbcUrl">
             jdbc:mysql://us-cdbr-iron-east-04.cleardb.net:3306/heroku_257324c6375c52e?useSSL=false</property>
         <property name="user">b601b51307a074</property>
-        <property name="password">04fadb0f</property>
+        <property name="password">04fadb0f</property>-->
 
         <property name="driverClass">com.mysql.jdbc.Driver</property>
 

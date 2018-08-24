@@ -29,7 +29,7 @@ public class SearchController {
     @RequestMapping(value = URL_BASE_SEARCH, method = RequestMethod.GET)
     public ModelAndView getVinyl(ModelAndView modelAndView,
                                  @RequestParam String data) {
-        System.out.println("*********************************************************************DATA" + data);
+
         List<Vinyl> dataList = searchService.findByTitleOrArtist(data);
         System.out.println(dataList);
         modelAndView.addObject("dataList", dataList);
